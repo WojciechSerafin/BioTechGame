@@ -3,22 +3,21 @@ package fxglgames;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.level.Level;
-import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import fxglgames.components.MoveComponent;
 import fxglgames.components.PlayerComponent;
 import javafx.scene.input.KeyCode;
-import javafx.util.Duration;
+import javafx.scene.input.MouseButton;
 
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class BioTechApp extends GameApplication {
   private Entity player;
-  //private PlayerComponent playerComponent;
-  private MoveComponent mc;
+  private MoveComponent moveComponent;
+  private PlayerComponent playerComponent;
   
   @Override
   protected void initSettings(GameSettings gameSettings) {
@@ -41,8 +40,8 @@ public class BioTechApp extends GameApplication {
     setLevelFromMap("tmx/TestTiled.tmx");
     spawn("background");
     player = getGameWorld().getEntitiesByType(EntityType.PLAYER).get(0);
-    mc = player.getComponent(MoveComponent.class);
-    //playerComponent = player.getComponent(PlayerComponent.class);
+    moveComponent = player.getComponent(MoveComponent.class);
+    playerComponent = player.getComponent(PlayerComponent.class);
     
     getGameScene().getViewport().bindToEntity(player, 1000, 500);
   }
@@ -51,7 +50,17 @@ public class BioTechApp extends GameApplication {
   protected void initPhysics() {
     PhysicsWorld physics = getPhysicsWorld();
     physics.setGravity(0,0);
+    
+    physics.addCollisionHandler(new CollisionHandler(EntityType.BULLET, EntityType.WALL) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        a.removeFromWorld();
+      }
+    });
+    
   }
+  
+  
   
   public static void main(String[] args) {
     launch(args);
@@ -62,14 +71,12 @@ public class BioTechApp extends GameApplication {
     getInput().addAction(new UserAction("Left") {
       @Override
       protected void onAction() {
-        mc.moveLeft();
-        //playerComponent.setLeft(true);
+        moveComponent.moveLeft();
       }
     
       @Override
       protected void onActionEnd() {
-        mc.stopHorizontal();
-        //playerComponent.setLeft(false);
+        moveComponent.stopHorizontal();
       }
     }, KeyCode.A);
   
@@ -77,14 +84,12 @@ public class BioTechApp extends GameApplication {
     getInput().addAction(new UserAction("Right") {
       @Override
       protected void onAction() {
-        mc.moveRight();
-        //playerComponent.setRight(true);
+        moveComponent.moveRight();
       }
     
       @Override
       protected void onActionEnd() {
-        mc.stopHorizontal();
-        //playerComponent.setRight(false);
+        moveComponent.stopHorizontal();
       }
     }, KeyCode.D);
   
@@ -92,14 +97,12 @@ public class BioTechApp extends GameApplication {
     getInput().addAction(new UserAction("Up") {
       @Override
       protected void onAction() {
-        mc.moveUp();
-        //playerComponent.setUp(true);
+        moveComponent.moveUp();
       }
     
       @Override
       protected void onActionEnd() {
-        mc.stopVertical();
-        //playerComponent.setUp(false);
+        moveComponent.stopVertical();
       }
     }, KeyCode.W);
   
@@ -107,16 +110,32 @@ public class BioTechApp extends GameApplication {
     getInput().addAction(new UserAction("Down") {
       @Override
       protected void onAction() {
-        mc.moveDown();
-        //playerComponent.setDown(true);
+        moveComponent.moveDown();
       }
     
       @Override
       protected void onActionEnd() {
-        mc.stopVertical();
-        //playerComponent.setDown(false);
+        moveComponent.stopVertical();
       }
     }, KeyCode.S);
+    
+    getInput().addAction(new UserAction("BasicAttack") {
+      @Override
+      protected void onAction() {
+        super.onAction();
+        playerComponent.Attack();
+      }
+  
+      @Override
+      protected void onActionBegin() {
+        super.onActionBegin();
+      }
+  
+      @Override
+      protected void onActionEnd() {
+        super.onActionEnd();
+      }
+    }, MouseButton.PRIMARY);
   }
   
 }

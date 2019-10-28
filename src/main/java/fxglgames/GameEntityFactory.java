@@ -1,5 +1,7 @@
 package fxglgames;
 
+import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
+import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
@@ -10,9 +12,11 @@ import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+import fxglgames.components.BulletComponent;
 import fxglgames.components.EnemyComponent;
 import fxglgames.components.MoveComponent;
 import fxglgames.components.PlayerComponent;
+import javafx.geometry.Point2D;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
@@ -40,8 +44,6 @@ public class GameEntityFactory implements EntityFactory {
     return entityBuilder().from(data)
                           .type(EntityType.PLAYER)
                           .bbox(new HitBox(BoundingShape.box(24,30)))
-//                          .viewWithBBox(texture("knight/KnightIdle.png")
-//                                          .toAnimatedTexture(15, Duration.seconds(1)).loop())
                           .with(physics)
                           .with(new MoveComponent())
                           .with(new PlayerComponent())
@@ -66,9 +68,13 @@ public class GameEntityFactory implements EntityFactory {
 
   @Spawns("bullet")
   public Entity newBullet(SpawnData data) {
+    Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(), getInput().getMouseYWorld() - data.getY());
     return entityBuilder().from(data)
                           .type(EntityType.BULLET)
                           .viewWithBBox("bullet/bullet.png")
+                          .with(new ProjectileComponent(dir, 500))
+                          .with(new OffscreenCleanComponent())
+                          .with(new BulletComponent())
                           .with(new CollidableComponent(true))
                           .build();
   }

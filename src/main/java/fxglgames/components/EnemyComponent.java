@@ -1,7 +1,6 @@
 package fxglgames.components;
 
 import com.almasb.fxgl.entity.component.Component;
-import com.almasb.fxgl.entity.component.Required;
 import com.almasb.fxgl.physics.PhysicsComponent;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
