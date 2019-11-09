@@ -23,7 +23,7 @@ public class BioTechApp extends GameApplication {
   protected void initSettings(GameSettings gameSettings) {
     gameSettings.setHeight(1080);
     gameSettings.setWidth(1920);
-    gameSettings.setTitle("The Game");
+    gameSettings.setTitle("The Bio Tech Game");
     gameSettings.setManualResizeEnabled(false);
     gameSettings.setFullScreenAllowed(true);
     gameSettings.setVersion("0.1");

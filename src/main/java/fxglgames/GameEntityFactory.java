@@ -68,7 +68,8 @@ public class GameEntityFactory implements EntityFactory {
 
   @Spawns("bullet")
   public Entity newBullet(SpawnData data) {
-    Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(), getInput().getMouseYWorld() - data.getY());
+    Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
+                             getInput().getMouseYWorld() - data.getY());
     return entityBuilder().from(data)
                           .type(EntityType.BULLET)
                           .viewWithBBox("bullet/bullet.png")

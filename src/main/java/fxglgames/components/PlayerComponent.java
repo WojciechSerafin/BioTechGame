@@ -47,7 +47,6 @@ public class PlayerComponent extends Component {
   public void onAdded() {
     entity.getTransformComponent().setScaleOrigin(entity.getBoundingBoxComponent().getCenterLocal());
     entity.getViewComponent().addChild(texture);
-    
   }
   
   private void updateFacing() {
