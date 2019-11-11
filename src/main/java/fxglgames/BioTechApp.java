@@ -6,6 +6,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import fxglgames.components.AttacksComponent;
 import fxglgames.components.MoveComponent;
 import fxglgames.components.PlayerComponent;
 import javafx.scene.input.KeyCode;
@@ -18,7 +19,8 @@ public class BioTechApp extends GameApplication {
   private Entity player;
   private MoveComponent moveComponent;
   private PlayerComponent playerComponent;
-  
+  private AttacksComponent attacksComponent;
+
   @Override
   protected void initSettings(GameSettings gameSettings) {
     gameSettings.setHeight(1080);
@@ -42,10 +44,16 @@ public class BioTechApp extends GameApplication {
     player = getGameWorld().getEntitiesByType(EntityType.PLAYER).get(0);
     moveComponent = player.getComponent(MoveComponent.class);
     playerComponent = player.getComponent(PlayerComponent.class);
+    attacksComponent = player.getComponent(AttacksComponent.class);
     
     getGameScene().getViewport().bindToEntity(player, 1000, 500);
   }
-  
+
+  @Override
+  protected void initUI() {
+
+  }
+
   @Override
   protected void initPhysics() {
     PhysicsWorld physics = getPhysicsWorld();
@@ -123,7 +131,7 @@ public class BioTechApp extends GameApplication {
       @Override
       protected void onAction() {
         super.onAction();
-        playerComponent.Attack();
+        attacksComponent.attack();
       }
   
       @Override
@@ -136,6 +144,24 @@ public class BioTechApp extends GameApplication {
         super.onActionEnd();
       }
     }, MouseButton.PRIMARY);
+
+    getInput().addAction(new UserAction("ResetAttack") {
+      @Override
+      protected void onAction() {
+        super.onAction();
+        attacksComponent.resetAttack();
+      }
+
+      @Override
+      protected void onActionBegin() {
+        super.onActionBegin();
+      }
+
+      @Override
+      protected void onActionEnd() {
+        super.onActionEnd();
+      }
+    }, MouseButton.SECONDARY);
   }
   
 }

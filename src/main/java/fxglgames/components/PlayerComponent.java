@@ -18,18 +18,15 @@ public class PlayerComponent extends Component {
   private MoveComponent moveComponent;
   private AnimatedTexture texture;
   private AnimationChannel animIdle, animWalk;
-  
-  
-  private float AttackSpeed = 5;
-  private Date lastAttack;
+
   
   public PlayerComponent() {
     Image imageIdle = image("knight/KnightIdle.png");
     Image imageWalk = image("knight/KnightRun.png");
-    
+
     animIdle = new AnimationChannel(imageIdle, Duration.seconds(0.66), 15);
     animWalk = new AnimationChannel(imageWalk, Duration.seconds(0.66), 8);
-    
+
     texture = new AnimatedTexture(animIdle);
     texture.loop();
     
@@ -65,14 +62,6 @@ public class PlayerComponent extends Component {
       if (texture.getAnimationChannel() != animIdle) {
         texture.loopAnimationChannel(animIdle);
       }
-    }
-  }
-  
-  public void Attack() {
-    Date now = new Date();
-    if (lastAttack == null || now.getTime() - lastAttack.getTime() > AttackSpeed * 1000) {
-      lastAttack = now;
-      spawn("bullet", entity.getCenter());
     }
   }
   
