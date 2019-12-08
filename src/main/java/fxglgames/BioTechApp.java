@@ -6,9 +6,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsWorld;
-import fxglgames.components.AttacksComponent;
-import fxglgames.components.MoveComponent;
-import fxglgames.components.PlayerComponent;
+import fxglgames.components.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 
@@ -65,7 +63,17 @@ public class BioTechApp extends GameApplication {
         a.removeFromWorld();
       }
     });
-    
+
+    physics.addCollisionHandler(new CollisionHandler(EntityType.BULLET, EntityType.ENEMY) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        Integer damage = a.getComponent(BulletComponent.class).getDamage();
+        if (!b.getComponent(HPComponent.class).hit(damage)) {
+          b.removeFromWorld();
+        }
+        a.removeFromWorld();
+      }
+    });
   }
   
   
