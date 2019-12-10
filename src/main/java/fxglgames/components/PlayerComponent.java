@@ -35,15 +35,15 @@ public class PlayerComponent extends Component {
   
   @Override
   public void onUpdate(double tpf) {
-    updateFacing();
-    updateAnimation();
+    //updateFacing();
+    //updateAnimation();
     super.onUpdate(tpf);
   }
   
   @Override
   public void onAdded() {
     entity.getTransformComponent().setScaleOrigin(entity.getBoundingBoxComponent().getCenterLocal());
-    entity.getViewComponent().addChild(texture);
+    //entity.getViewComponent().addChild(texture);
   }
   
   private void updateFacing() {

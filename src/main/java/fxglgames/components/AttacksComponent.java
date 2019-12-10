@@ -31,6 +31,7 @@ public class AttacksComponent extends GenericBarViewComponent {
         nextAtackCD.setValue(0);
         valueProperty().bind(nextAtackCD);
         this.getBar().setLabelVisible(false);
+        this.getBar().setVisible(false);
     }
     
     @Override

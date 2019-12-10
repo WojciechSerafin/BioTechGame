@@ -44,8 +44,8 @@ public class GameEntityFactory implements EntityFactory {
 
     return entityBuilder().from(data)
                           .type(EntityType.PLAYER)
-//                          .viewWithBBox(new Rectangle(64,96, Color.BLUE))
-                          .bbox(new HitBox(BoundingShape.box(24,30)))
+                          .viewWithBBox(new Rectangle(64,96, Color.BLUE))
+                          //.bbox(new HitBox(BoundingShape.box(24,30)))
                           .with(physics)
                           .with(hpComponent)
                           .with(new MoveComponent())
