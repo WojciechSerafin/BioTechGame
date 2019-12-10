@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="180" height="102" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="106">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="180" height="102" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="116">
  <objectgroup id="4" name="Warstwa Obiektow">
   <object id="5" name="wall" type="wall" x="1.13687e-12" y="0" width="32" height="3264"/>
   <object id="7" name="wall" type="wall" x="1920" y="0" width="64" height="350.667"/>
@@ -258,4 +258,9 @@
   <object id="103" name="wall" type="wall" x="0" y="288" width="188" height="64"/>
   <object id="105" name="wall" type="wall" x="325" y="288" width="188" height="64"/>
  </objectgroup>
+ <layer id="7" name="Warstwa Kafelków 1" width="180" height="102">
+  <data encoding="base64" compression="zlib">
+   eAHt0AENAAAAwqD3T20ON4hAYcCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAgY+BAR7vAAE=
+  </data>
+ </layer>
 </map>

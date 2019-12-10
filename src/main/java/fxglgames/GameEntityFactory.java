@@ -12,10 +12,7 @@ import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
-import fxglgames.components.BulletComponent;
-import fxglgames.components.EnemyComponent;
-import fxglgames.components.MoveComponent;
-import fxglgames.components.PlayerComponent;
+import fxglgames.components.*;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -40,13 +37,20 @@ public class GameEntityFactory implements EntityFactory {
   public Entity newPlayer(SpawnData data) {
     PhysicsComponent physics = new PhysicsComponent();
     physics.setBodyType(BodyType.DYNAMIC);
-    
+
+    HPComponent hpComponent = new HPComponent(-35, -20,Color.YELLOW,0.0,100.0);
+    hpComponent.getBar().setScaleX(0.3d);
+    hpComponent.getBar().setScaleY(0.3d);
+
     return entityBuilder().from(data)
                           .type(EntityType.PLAYER)
+//                          .viewWithBBox(new Rectangle(64,96, Color.BLUE))
                           .bbox(new HitBox(BoundingShape.box(24,30)))
                           .with(physics)
+                          .with(hpComponent)
                           .with(new MoveComponent())
                           .with(new PlayerComponent())
+                          .with(new AttacksComponent(-35,35,Color.WHITE))
                           .with(new CollidableComponent(true))
                           .build();
   }
@@ -55,12 +59,17 @@ public class GameEntityFactory implements EntityFactory {
   public Entity newEnemy(SpawnData data) {
     PhysicsComponent physics = new PhysicsComponent();
     physics.setBodyType(BodyType.DYNAMIC);
+  
+    HPComponent hpComponent = new HPComponent(-35, -20,Color.RED,0.0,100.0);
+    hpComponent.getBar().setScaleX(0.3d);
+    hpComponent.getBar().setScaleY(0.3d);
     
     return entityBuilder().from(data)
                           .type(EntityType.ENEMY)
                           .viewWithBBox(texture("skeleton/SkeletonIdle.png")
                               .toAnimatedTexture(11, Duration.seconds(1)).loop())
                           .with(physics)
+                          .with(hpComponent)
                           .with(new EnemyComponent())
                           .with(new CollidableComponent(true))
                           .build();
@@ -73,9 +82,9 @@ public class GameEntityFactory implements EntityFactory {
     return entityBuilder().from(data)
                           .type(EntityType.BULLET)
                           .viewWithBBox("bullet/bullet.png")
-                          .with(new ProjectileComponent(dir, 500))
+                          .with(new ProjectileComponent(data.get("dir"), (Double)data.get("bulletSpeed")))
                           .with(new OffscreenCleanComponent())
-                          .with(new BulletComponent())
+                          .with(new BulletComponent(30))
                           .with(new CollidableComponent(true))
                           .build();
   }
@@ -84,6 +93,15 @@ public class GameEntityFactory implements EntityFactory {
     return entityBuilder().from(data)
                           .view(new Rectangle(5744,3240, Color.BLACK))
                           .zIndex(-1)
+                          .with(new IrremovableComponent())
+                          .build();
+  }
+
+  @Spawns("AttackIndicator")
+  public  Entity newAttackIndicator(SpawnData data) {
+    return entityBuilder().from(data)
+                          .view(new Rectangle(100,10, Color.WHITE))
+                          .zIndex(1)
                           .with(new IrremovableComponent())
                           .build();
   }

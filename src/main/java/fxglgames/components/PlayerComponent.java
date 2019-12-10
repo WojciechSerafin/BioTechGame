@@ -9,6 +9,7 @@ import javafx.util.Duration;
 
 
 import java.util.Date;
+import java.util.HashMap;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.image;
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -17,20 +18,17 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class PlayerComponent extends Component {
   private MoveComponent moveComponent;
   private AnimatedTexture texture;
-  private AnimationChannel animIdle, animWalk;
-  
-  
-  private float AttackSpeed = 5;
-  private Date lastAttack;
+  private HashMap<String, AnimationChannel> animations = new HashMap<String, AnimationChannel>();
+
   
   public PlayerComponent() {
     Image imageIdle = image("knight/KnightIdle.png");
     Image imageWalk = image("knight/KnightRun.png");
-    
-    animIdle = new AnimationChannel(imageIdle, Duration.seconds(0.66), 15);
-    animWalk = new AnimationChannel(imageWalk, Duration.seconds(0.66), 8);
-    
-    texture = new AnimatedTexture(animIdle);
+
+    animations.put("animIdle", new AnimationChannel(imageIdle, Duration.seconds(0.66), 15));
+    animations.put("animWalk", new AnimationChannel(imageWalk, Duration.seconds(0.66), 8));
+
+    texture = new AnimatedTexture(animations.get("animIdle"));
     texture.loop();
     
   }
@@ -40,7 +38,6 @@ public class PlayerComponent extends Component {
     updateFacing();
     updateAnimation();
     super.onUpdate(tpf);
-    
   }
   
   @Override
@@ -57,21 +54,13 @@ public class PlayerComponent extends Component {
   
   private void updateAnimation() {
     if (moveComponent.isMoving()) {
-      if (texture.getAnimationChannel() != animWalk) {
-        texture.loopAnimationChannel(animWalk);
+      if (texture.getAnimationChannel() != animations.get("animWalk")) {
+        texture.loopAnimationChannel(animations.get("animWalk"));
       }
     } else {
-      if (texture.getAnimationChannel() != animIdle) {
-        texture.loopAnimationChannel(animIdle);
+      if (texture.getAnimationChannel() != animations.get("animIdle")) {
+        texture.loopAnimationChannel(animations.get("animIdle"));
       }
-    }
-  }
-  
-  public void Attack() {
-    Date now = new Date();
-    if (lastAttack == null || now.getTime() - lastAttack.getTime() > AttackSpeed * 1000) {
-      lastAttack = now;
-      spawn("bullet", entity.getCenter());
     }
   }
   
