@@ -12,7 +12,7 @@ public class MoveComponent extends Component {
   private PhysicsComponent physics;
   
   
-  private int speed = 200;
+  private int speed = 300;
   
   public void moveLeft() {
     physics.setVelocityX(-speed);

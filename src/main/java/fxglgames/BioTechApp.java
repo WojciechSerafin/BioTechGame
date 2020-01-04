@@ -1,14 +1,19 @@
 package fxglgames;
 
+import com.almasb.fxgl.app.FXGLMenu;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.SceneFactory;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import fxglgames.UI.GameOverMenu;
+import fxglgames.UI.MainMenu;
 import fxglgames.components.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import org.jetbrains.annotations.NotNull;
 
 
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -27,6 +32,17 @@ public class BioTechApp extends GameApplication {
     gameSettings.setManualResizeEnabled(false);
     gameSettings.setFullScreenAllowed(true);
     gameSettings.setVersion("0.1");
+    gameSettings.setMenuEnabled(true);
+    gameSettings.setSceneFactory(new SceneFactory() {
+      @Override
+      public FXGLMenu newMainMenu() {
+        return new MainMenu();
+      }
+      @Override
+      public FXGLMenu newGameMenu() {
+        return new GameOverMenu();
+      }
+    });
   }
 
   @Override
@@ -72,6 +88,14 @@ public class BioTechApp extends GameApplication {
           b.removeFromWorld();
         }
         a.removeFromWorld();
+      }
+    });
+  
+    physics.addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.ENEMY) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        a.getComponent(HPComponent.class).hit(50);
+        b.getComponent(HPComponent.class).hit(50);
       }
     });
   }

@@ -27,7 +27,8 @@ public class GameEntityFactory implements EntityFactory {
   public Entity newWall(SpawnData data) {
     return entityBuilder().from(data)
                           .type(EntityType.WALL)
-                          .viewWithBBox(new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"), Color.RED))
+                          //.viewWithBBox(new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"), Color.RED))
+                          .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
                           .with(new PhysicsComponent())
                           .with(new CollidableComponent(true))
                           .build();

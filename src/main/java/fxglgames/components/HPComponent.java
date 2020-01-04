@@ -2,6 +2,7 @@ package fxglgames.components;
 
 import com.almasb.fxgl.dsl.components.view.GenericBarViewComponent;
 import com.almasb.fxgl.entity.component.Component;
+import fxglgames.EntityType;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -27,6 +28,9 @@ public class HPComponent extends GenericBarViewComponent {
     public Boolean hit(Integer damage) {
         this.curHealth.set(curHealth.get() - damage);
         if (this.curHealth.get() <= 0) {
+            if (entity.getType() == EntityType.PLAYER) {
+            
+            }
             return false;
         } else {
             return true;
