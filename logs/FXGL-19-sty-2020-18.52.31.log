@@ -1,0 +1,320 @@
+18:48:12.737 [main                     ] DEBUG GameApplication      - Logger initialized
+18:48:12.753 [main                     ] DEBUG GameApplication      - Logging settings
+Title: The Bio Tech Game
+Version: 0.1
+Width: 1920
+Height: 1080
+Fullscreen: true
+Intro: false
+Menus: true
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class fxglgames.BioTechApp$1
+Dialog Factory: class com.almasb.fxgl.ui.FXGLDialogFactory
+UI Factory: class com.almasb.fxgl.ui.FXGLUIFactory
+
+18:48:13.171 [JavaFX Application Thread] DEBUG Engine               - Initializing FXGL
+18:48:13.172 [JavaFX Application Thread] INFO  Engine               - FXGL-11.6 (17.11.2019 13.16) on WINDOWS (J:12.0.2 FX:12.0.1)
+18:48:13.172 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+18:48:13.172 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+18:48:13.173 [JavaFX Application Thread] DEBUG Engine               - Initializing environment variables
+18:48:13.178 [JavaFX Application Thread] DEBUG Engine               - Logging environment variables
+18:48:13.178 [JavaFX Application Thread] DEBUG Engine               - achievements: []
+18:48:13.180 [JavaFX Application Thread] DEBUG Engine               - sceneStack: com.almasb.fxgl.app.Engine@4be39618
+18:48:13.181 [JavaFX Application Thread] DEBUG Engine               - language: ObjectProperty [value: ENGLISH]
+18:48:13.181 [JavaFX Application Thread] DEBUG Engine               - isCloseConfirmation: false
+18:48:13.181 [JavaFX Application Thread] DEBUG Engine               - isProfilingEnabled: false
+18:48:13.182 [JavaFX Application Thread] DEBUG Engine               - soundNotification: core/notification.wav
+18:48:13.183 [JavaFX Application Thread] DEBUG Engine               - devShowBBoxProperty: BooleanProperty [value: false]
+18:48:13.193 [JavaFX Application Thread] DEBUG Engine               - pixelsPerMeter: 50.0
+18:48:13.193 [JavaFX Application Thread] DEBUG Engine               - overlayRoot: Group@6d415970
+18:48:13.193 [JavaFX Application Thread] DEBUG Engine               - appIcon: fxgl_icon.png
+18:48:13.193 [JavaFX Application Thread] DEBUG Engine               - soundMenuBack: menu/back.wav
+18:48:13.194 [JavaFX Application Thread] DEBUG Engine               - isFullScreenAllowed: true
+18:48:13.194 [JavaFX Application Thread] DEBUG Engine               - isIntroEnabled: false
+18:48:13.194 [JavaFX Application Thread] DEBUG Engine               - eventBus: com.almasb.fxgl.event.EventBus@517ee1ce
+18:48:13.194 [JavaFX Application Thread] DEBUG Engine               - fontMono: lucida_console.ttf
+18:48:13.194 [JavaFX Application Thread] DEBUG Engine               - soundMenuSelect: menu/select.wav
+18:48:13.194 [JavaFX Application Thread] DEBUG Engine               - isWindows: true
+18:48:13.194 [JavaFX Application Thread] DEBUG Engine               - isMobile: false
+18:48:13.194 [JavaFX Application Thread] DEBUG Engine               - height: 1080
+18:48:13.195 [JavaFX Application Thread] DEBUG Engine               - isExperimentalNative: false
+18:48:13.195 [JavaFX Application Thread] DEBUG Engine               - cSSList: [fxgl_dark.css]
+18:48:13.195 [JavaFX Application Thread] DEBUG Engine               - isSingleStep: false
+18:48:13.195 [JavaFX Application Thread] DEBUG Engine               - fontGame: Abel-Regular.ttf
+18:48:13.195 [JavaFX Application Thread] DEBUG Engine               - menuKey: ESCAPE
+18:48:13.195 [JavaFX Application Thread] DEBUG Engine               - devShowPositionProperty: BooleanProperty [value: false]
+18:48:13.195 [JavaFX Application Thread] DEBUG Engine               - versionCheckDays: 7
+18:48:13.195 [JavaFX Application Thread] DEBUG Engine               - masterTimer: com.almasb.fxgl.time.Timer@67aeeaf
+18:48:13.196 [JavaFX Application Thread] DEBUG Engine               - configClass: Optional.empty
+18:48:13.196 [JavaFX Application Thread] DEBUG Engine               - isFullScreenFromStart: false
+18:48:13.196 [JavaFX Application Thread] DEBUG Engine               - version: 0.1
+18:48:13.196 [JavaFX Application Thread] DEBUG Engine               - fullScreen: BooleanProperty [value: false]
+18:48:13.196 [JavaFX Application Thread] DEBUG Engine               - dialogFactory: com.almasb.fxgl.ui.FXGLDialogFactory@7a70ba64
+18:48:13.196 [JavaFX Application Thread] DEBUG Engine               - applicationMode: DEVELOPER
+18:48:13.196 [JavaFX Application Thread] DEBUG Engine               - isMac: false
+18:48:13.196 [JavaFX Application Thread] DEBUG Engine               - urlGoogleForms: https://goo.gl/forms/6wrMnOBxTE1fEpOy2
+18:48:13.196 [JavaFX Application Thread] DEBUG Engine               - isMenuEnabled: true
+18:48:13.196 [JavaFX Application Thread] DEBUG Engine               - urlPOM: https://raw.githubusercontent.com/AlmasB/FXGL/master/pom.xml
+18:48:13.197 [JavaFX Application Thread] DEBUG Engine               - profileName: user.profile
+18:48:13.197 [JavaFX Application Thread] DEBUG Engine               - notificationViewClass: class com.almasb.fxgl.notification.view.XboxNotificationView
+18:48:13.198 [JavaFX Application Thread] DEBUG Engine               - devSensorColorProperty: ObjectProperty [value: 0xffff00ff]
+18:48:13.198 [JavaFX Application Thread] DEBUG Engine               - sceneFactory: fxglgames.BioTechApp$1@1d9de683
+18:48:13.198 [JavaFX Application Thread] DEBUG Engine               - dataFileExt: .dat
+18:48:13.198 [JavaFX Application Thread] DEBUG Engine               - stageStyle: DECORATED
+18:48:13.198 [JavaFX Application Thread] DEBUG Engine               - isManualResizeEnabled: false
+18:48:13.198 [JavaFX Application Thread] DEBUG Engine               - title: The Bio Tech Game
+18:48:13.198 [JavaFX Application Thread] DEBUG Engine               - platform: WINDOWS
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - devBBoxColorProperty: ObjectProperty [value: 0xff0000ff]
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - isDesktop: true
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - credits: []
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - globalMusicVolumeProperty: DoubleProperty [value: 0.5]
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - isPreserveResizeRatio: false
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - uIFactory: com.almasb.fxgl.ui.FXGLUIFactory@3b4b046f
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - fontText: Courier-Prime.ttf
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - isExperimentalTiledLargeMap: false
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - secondsIn24h: 60
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - runtimeInfo: RuntimeInfo(platform=WINDOWS, version=11.6, build=17.11.2019 13.16)
+18:48:13.199 [JavaFX Application Thread] DEBUG Engine               - isLinux: false
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - soundMenuPress: menu/press.wav
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - urlGithub: https://github.com/AlmasB/FXGL
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - profileDir: profiles/
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - isDeveloperMenuEnabled: false
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - globalSoundVolumeProperty: DoubleProperty [value: 0.5]
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - isBrowser: false
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - urlLeaderboard: http://fxgl-top.herokuapp.com/
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - globalSoundVolume: 0.5
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - saveDir: saves/
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - engineServices: [class com.almasb.fxgl.audio.AudioPlayer, class com.almasb.fxgl.notification.impl.NotificationServiceProvider, class com.almasb.fxgl.achievement.AchievementManager, class com.almasb.fxgl.cutscene.CutsceneService, class com.almasb.fxgl.minigames.MiniGameService]
+18:48:13.200 [JavaFX Application Thread] DEBUG Engine               - globalMusicVolume: 0.5
+18:48:13.201 [JavaFX Application Thread] DEBUG Engine               - width: 1920
+18:48:13.201 [JavaFX Application Thread] DEBUG Engine               - saveFileExt: .sav
+18:48:13.201 [JavaFX Application Thread] DEBUG Engine               - isAndroid: false
+18:48:13.201 [JavaFX Application Thread] DEBUG Engine               - fontUI: VarelaRound-Regular.ttf
+18:48:13.201 [JavaFX Application Thread] DEBUG Engine               - enabledMenuItems: []
+18:48:13.201 [JavaFX Application Thread] DEBUG Engine               - isIOS: false
+18:48:13.203 [JavaFX Application Thread] DEBUG Engine               - Adding new engine service: class com.almasb.fxgl.audio.AudioPlayer
+18:48:13.204 [JavaFX Application Thread] DEBUG Engine               - Adding new engine service: class com.almasb.fxgl.notification.impl.NotificationServiceProvider
+18:48:13.204 [JavaFX Application Thread] DEBUG Engine               - Adding new engine service: class com.almasb.fxgl.achievement.AchievementManager
+18:48:13.205 [JavaFX Application Thread] DEBUG Engine               - Adding new engine service: class com.almasb.fxgl.cutscene.CutsceneService
+18:48:13.205 [JavaFX Application Thread] DEBUG Engine               - Adding new engine service: class com.almasb.fxgl.minigames.MiniGameService
+18:48:13.208 [JavaFX Application Thread] DEBUG Engine               - Loading localizations
+18:48:13.210 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/properties/languages/english.properties
+18:48:13.212 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/properties/languages/french.properties
+18:48:13.214 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/properties/languages/german.properties
+18:48:13.215 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/properties/languages/russian.properties
+18:48:13.216 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/properties/languages/hungarian.properties
+18:48:13.218 [JavaFX Application Thread] DEBUG Engine               - Registering font factories
+18:48:13.218 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/ui/fonts/VarelaRound-Regular.ttf
+18:48:13.362 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/ui/fonts/Abel-Regular.ttf
+18:48:13.371 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/ui/fonts/lucida_console.ttf
+18:48:13.376 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/ui/fonts/Courier-Prime.ttf
+18:48:13.382 [JavaFX Application Thread] DEBUG Engine               - Setting UI factory
+18:48:13.477 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/textures/fxgl_logo.png
+18:48:13.535 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+18:48:13.576 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 1920.0 x 1080.0
+18:48:13.577 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    1920.0 x 1080.0
+18:48:13.577 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+18:48:13.578 [JavaFX Application Thread] DEBUG MainWindow           - Set initial scene to FXGLStartupScene
+18:48:13.586 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/textures/fxgl_icon.png
+18:48:13.598 [JavaFX Application Thread] DEBUG Engine               - Applying CSS: fxgl_dark.css
+18:48:13.598 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/ui/css/fxgl_dark.css
+18:48:13.601 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/ui/cursors/fxgl_default.png
+18:48:13.602 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+18:48:13.730 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (16.0, 39.0)
+18:48:13.730 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 1920.0 x 1080.0
+18:48:13.730 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+18:48:13.730 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 1920.0 x 1080.0
+18:48:13.730 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 1936.0 x 1119.0
+18:48:13.772 [FXGL Background Thread 1 ] DEBUG FS                   - Loaded FSServiceImpl
+18:48:13.772 [FXGL Background Thread 1 ] DEBUG Engine               - Loading FXGL system data
+18:48:13.776 [FXGL Background Thread 1 ] DEBUG FSServiceImpl        - Reading from: D:\_Projekty\Java\TheGame\BioTechGame\system\fxgl.bundle
+18:48:13.786 [FXGL Background Thread 1 ] DEBUG Engine               - Bundle FXGL: {}
+18:48:13.786 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing application scenes
+18:48:13.811 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+18:48:13.848 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=1080, physics.ppm=50,0
+18:48:13.852 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 1920x1080
+18:48:13.891 [FXGL Background Thread 1 ] DEBUG Engine               - Application scenes initialized
+18:48:13.894 [JavaFX Application Thread] DEBUG Engine               - Running preInit()
+18:48:13.903 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Left - A
+18:48:13.903 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Right - D
+18:48:13.903 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Up - W
+18:48:13.903 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Down - S
+18:48:13.904 [JavaFX Application Thread] DEBUG Input                - Registered new binding: BasicAttack - LMB
+18:48:13.905 [JavaFX Application Thread] DEBUG Input                - Registered new binding: ResetAttack - RMB
+18:48:13.905 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - P
+18:48:13.906 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+18:48:13.906 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+18:48:13.906 [JavaFX Application Thread] DEBUG Engine               - generateDefaultProfile()
+18:48:13.906 [JavaFX Application Thread] DEBUG Engine               - Creating default profile
+18:48:13.906 [JavaFX Application Thread] DEBUG EventBus             - Firing event: SaveEvent
+18:48:13.917 [JavaFX Application Thread] INFO  Engine               - FXGL initialization took: 0,708 sec
+18:48:13.917 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+18:48:13.930 [JavaFX Application Thread] DEBUG FXGLStartupScene     - STARTUP
+18:48:13.932 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+18:48:13.943 [JavaFX Application Thread] DEBUG Engine               - Removing overlay from FXGLStartupScene and adding to MainMenu
+18:48:13.943 [JavaFX Application Thread] DEBUG MainWindow           - FXGLStartupScene -> MainMenu
+18:48:14.853 [JavaFX Application Thread] DEBUG Menu                 - fireNewGame()
+18:48:14.853 [JavaFX Application Thread] DEBUG Engine               - Starting new game
+18:48:14.858 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+18:48:14.858 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Clearing previous game
+18:48:14.858 [FXGL Background Thread 1 ] DEBUG GameWorld            - Clearing game world
+18:48:14.858 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Clearing physics world
+18:48:14.858 [FXGL Background Thread 1 ] DEBUG GameScene            - Clearing game scene
+18:48:14.858 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Game
+18:48:14.864 [JavaFX Application Thread] DEBUG Engine               - Removing overlay from MainMenu and adding to LoadingScene
+18:48:14.865 [JavaFX Application Thread] DEBUG MainWindow           - MainMenu -> LoadingScene
+18:48:14.867 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from file system: /assets/levels/tmx/TestTileddwa.tmx
+18:48:14.894 [FXGL Background Thread 1 ] WARN  TMXLevelLoader       - TiledMap generated from 1.3.1. Supported version: 1.2.3. Some features may not be parsed fully.
+18:48:14.938 [FXGL Background Thread 1 ] DEBUG TMXLevelLoader       - Parsed raw map: TiledMap(width=180, height=180, tilewidth=32, tileheight=32, orientation=orthogonal, layers=[Layer(width=0, height=0, name=Warstwa Obiektow, type=objectgroup, visible=false, x=0, y=0, data=[], objects=[com.almasb.fxgl.entity.level.tiled.TiledObject@ef14c38, com.almasb.fxgl.entity.level.tiled.TiledObject@4ca7c3e2, com.almasb.fxgl.entity.level.tiled.TiledObject@5bd60b8d, com.almasb.fxgl.entity.level.tiled.TiledObject@38b89727, com.almasb.fxgl.entity.level.tiled.TiledObject@3cac9c84, com.almasb.fxgl.entity.level.tiled.TiledObject@4ee6f020, com.almasb.fxgl.entity.level.tiled.TiledObject@25070012, com.almasb.fxgl.entity.level.tiled.TiledObject@597aba3a, com.almasb.fxgl.entity.level.tiled.TiledObject@16a552d, com.almasb.fxgl.entity.level.tiled.TiledObject@78f4d2d0, com.almasb.fxgl.entity.level.tiled.TiledObject@656e4a4c, com.almasb.fxgl.entity.level.tiled.TiledObject@69c997b1, com.almasb.fxgl.entity.level.tiled.TiledObject@3ad97498, com.almasb.fxgl.entity.level.tiled.TiledObject@64654341, com.almasb.fxgl.entity.level.tiled.TiledObject@73ce49ab, com.almasb.fxgl.entity.level.tiled.TiledObject@561f2c7c, com.almasb.fxgl.entity.level.tiled.TiledObject@2793ff93, com.almasb.fxgl.entity.level.tiled.TiledObject@6922cf6b, com.almasb.fxgl.entity.level.tiled.TiledObject@68a040f5, com.almasb.fxgl.entity.level.tiled.TiledObject@47f3ed51, com.almasb.fxgl.entity.level.tiled.TiledObject@7f24fd5b, com.almasb.fxgl.entity.level.tiled.TiledObject@823c43, com.almasb.fxgl.entity.level.tiled.TiledObject@6acf634e, com.almasb.fxgl.entity.level.tiled.TiledObject@320e9223, com.almasb.fxgl.entity.level.tiled.TiledObject@6a987f1c, com.almasb.fxgl.entity.level.tiled.TiledObject@7b693628, com.almasb.fxgl.entity.level.tiled.TiledObject@6aadef18, com.almasb.fxgl.entity.level.tiled.TiledObject@2c74e7e4, com.almasb.fxgl.entity.level.tiled.TiledObject@5bd0de9, com.almasb.fxgl.entity.level.tiled.TiledObject@37d7a300, com.almasb.fxgl.entity.level.tiled.TiledObject@32874fcd, com.almasb.fxgl.entity.level.tiled.TiledObject@39c7c5be, com.almasb.fxgl.entity.level.tiled.TiledObject@54f8552a, com.almasb.fxgl.entity.level.tiled.TiledObject@5e3d2316, com.almasb.fxgl.entity.level.tiled.TiledObject@56cce63b, com.almasb.fxgl.entity.level.tiled.TiledObject@51212369, com.almasb.fxgl.entity.level.tiled.TiledObject@47666d62, com.almasb.fxgl.entity.level.tiled.TiledObject@7074c30b, com.almasb.fxgl.entity.level.tiled.TiledObject@41381e00, com.almasb.fxgl.entity.level.tiled.TiledObject@19da4725, com.almasb.fxgl.entity.level.tiled.TiledObject@6d232401, com.almasb.fxgl.entity.level.tiled.TiledObject@3b19de35, com.almasb.fxgl.entity.level.tiled.TiledObject@3a500f48, com.almasb.fxgl.entity.level.tiled.TiledObject@71f89448, com.almasb.fxgl.entity.level.tiled.TiledObject@58fa55a, com.almasb.fxgl.entity.level.tiled.TiledObject@70922ba8, com.almasb.fxgl.entity.level.tiled.TiledObject@4a8240bd, com.almasb.fxgl.entity.level.tiled.TiledObject@7fedc771, com.almasb.fxgl.entity.level.tiled.TiledObject@7b018a3, com.almasb.fxgl.entity.level.tiled.TiledObject@669eac96, com.almasb.fxgl.entity.level.tiled.TiledObject@3e418f50, com.almasb.fxgl.entity.level.tiled.TiledObject@2f8611a6, com.almasb.fxgl.entity.level.tiled.TiledObject@28f461f5, com.almasb.fxgl.entity.level.tiled.TiledObject@3b9d8261, com.almasb.fxgl.entity.level.tiled.TiledObject@994a14d, com.almasb.fxgl.entity.level.tiled.TiledObject@16809af8, com.almasb.fxgl.entity.level.tiled.TiledObject@1df0ba14, com.almasb.fxgl.entity.level.tiled.TiledObject@4a29bd41, com.almasb.fxgl.entity.level.tiled.TiledObject@669be380, com.almasb.fxgl.entity.level.tiled.TiledObject@745ee2f1, com.almasb.fxgl.entity.level.tiled.TiledObject@6ce6c674, com.almasb.fxgl.entity.level.tiled.TiledObject@6b22bd1c, com.almasb.fxgl.entity.level.tiled.TiledObject@521cd41b, com.almasb.fxgl.entity.level.tiled.TiledObject@5156edc3, com.almasb.fxgl.entity.level.tiled.TiledObject@bd944fb, com.almasb.fxgl.entity.level.tiled.TiledObject@756dc2c1, com.almasb.fxgl.entity.level.tiled.TiledObject@41e56c7b, com.almasb.fxgl.entity.level.tiled.TiledObject@27bbb971, com.almasb.fxgl.entity.level.tiled.TiledObject@6604cfe1, com.almasb.fxgl.entity.level.tiled.TiledObject@7de4622a, com.almasb.fxgl.entity.level.tiled.TiledObject@17885f59, com.almasb.fxgl.entity.level.tiled.TiledObject@6d820ce8, com.almasb.fxgl.entity.level.tiled.TiledObject@2d39ad7e, com.almasb.fxgl.entity.level.tiled.TiledObject@73926fc1, com.almasb.fxgl.entity.level.tiled.TiledObject@2635847d, com.almasb.fxgl.entity.level.tiled.TiledObject@5b2d391f, com.almasb.fxgl.entity.level.tiled.TiledObject@3b9f3d59, com.almasb.fxgl.entity.level.tiled.TiledObject@5b93a18c, com.almasb.fxgl.entity.level.tiled.TiledObject@518fd0ef, com.almasb.fxgl.entity.level.tiled.TiledObject@6358fe00, com.almasb.fxgl.entity.level.tiled.TiledObject@216f72c7, com.almasb.fxgl.entity.level.tiled.TiledObject@673628a7, com.almasb.fxgl.entity.level.tiled.TiledObject@48119406, com.almasb.fxgl.entity.level.tiled.TiledObject@6c1ddbfa, com.almasb.fxgl.entity.level.tiled.TiledObject@36be65f4, com.almasb.fxgl.entity.level.tiled.TiledObject@609b0094, com.almasb.fxgl.entity.level.tiled.TiledObject@246e1925, com.almasb.fxgl.entity.level.tiled.TiledObject@262ed459, com.almasb.fxgl.entity.level.tiled.TiledObject@637a94ad, com.almasb.fxgl.entity.level.tiled.TiledObject@5b5da7f6, com.almasb.fxgl.entity.level.tiled.TiledObject@fae2a89, com.almasb.fxgl.entity.level.tiled.TiledObject@5ff2ab39, com.almasb.fxgl.entity.level.tiled.TiledObject@689a8396, com.almasb.fxgl.entity.level.tiled.TiledObject@5eceeb64, com.almasb.fxgl.entity.level.tiled.TiledObject@20ca6856, com.almasb.fxgl.entity.level.tiled.TiledObject@6aaba415, com.almasb.fxgl.entity.level.tiled.TiledObject@56110ce5, com.almasb.fxgl.entity.level.tiled.TiledObject@7f2d4888, com.almasb.fxgl.entity.level.tiled.TiledObject@cd617e3, com.almasb.fxgl.entity.level.tiled.TiledObject@3bea9160, com.almasb.fxgl.entity.level.tiled.TiledObject@65c2d4dc, com.almasb.fxgl.entity.level.tiled.TiledObject@70bea9e4, com.almasb.fxgl.entity.level.tiled.TiledObject@4c6bd11f, com.almasb.fxgl.entity.level.tiled.TiledObject@23e52863, com.almasb.fxgl.entity.level.tiled.TiledObject@50726cf7, com.almasb.fxgl.entity.level.tiled.TiledObject@55861e94, com.almasb.fxgl.entity.level.tiled.TiledObject@4777de12, com.almasb.fxgl.entity.level.tiled.TiledObject@4d5b40af, com.almasb.fxgl.entity.level.tiled.TiledObject@e8d9827, com.almasb.fxgl.entity.level.tiled.TiledObject@6b9a55dc, com.almasb.fxgl.entity.level.tiled.TiledObject@12e491f3, com.almasb.fxgl.entity.level.tiled.TiledObject@5ade538, com.almasb.fxgl.entity.level.tiled.TiledObject@6783190a, com.almasb.fxgl.entity.level.tiled.TiledObject@5e0e8493, com.almasb.fxgl.entity.level.tiled.TiledObject@68d3eda8, com.almasb.fxgl.entity.level.tiled.TiledObject@2bd51af, com.almasb.fxgl.entity.level.tiled.TiledObject@7d0953bb, com.almasb.fxgl.entity.level.tiled.TiledObject@57097a95, com.almasb.fxgl.entity.level.tiled.TiledObject@20c07371, com.almasb.fxgl.entity.level.tiled.TiledObject@48187eef, com.almasb.fxgl.entity.level.tiled.TiledObject@7f3b68dc, com.almasb.fxgl.entity.level.tiled.TiledObject@637a787c, com.almasb.fxgl.entity.level.tiled.TiledObject@4082d499, com.almasb.fxgl.entity.level.tiled.TiledObject@4be62560, com.almasb.fxgl.entity.level.tiled.TiledObject@6fbfd948, com.almasb.fxgl.entity.level.tiled.TiledObject@5fb6f55b, com.almasb.fxgl.entity.level.tiled.TiledObject@946d428, com.almasb.fxgl.entity.level.tiled.TiledObject@73f13d45, com.almasb.fxgl.entity.level.tiled.TiledObject@6215dfea, com.almasb.fxgl.entity.level.tiled.TiledObject@a61f2de, com.almasb.fxgl.entity.level.tiled.TiledObject@35b9902e, com.almasb.fxgl.entity.level.tiled.TiledObject@4f5888c9, com.almasb.fxgl.entity.level.tiled.TiledObject@3fee447, com.almasb.fxgl.entity.level.tiled.TiledObject@68c11e4, com.almasb.fxgl.entity.level.tiled.TiledObject@7fcdd9fb, com.almasb.fxgl.entity.level.tiled.TiledObject@7458180b, com.almasb.fxgl.entity.level.tiled.TiledObject@70161b, com.almasb.fxgl.entity.level.tiled.TiledObject@669534c0, com.almasb.fxgl.entity.level.tiled.TiledObject@77063be8, com.almasb.fxgl.entity.level.tiled.TiledObject@432afd43, com.almasb.fxgl.entity.level.tiled.TiledObject@43eafbf3, com.almasb.fxgl.entity.level.tiled.TiledObject@c16f47a, com.almasb.fxgl.entity.level.tiled.TiledObject@4a09476b, com.almasb.fxgl.entity.level.tiled.TiledObject@5edd6b8c, com.almasb.fxgl.entity.level.tiled.TiledObject@4afc36c7, com.almasb.fxgl.entity.level.tiled.TiledObject@7172aec6, com.almasb.fxgl.entity.level.tiled.TiledObject@71408d9c, com.almasb.fxgl.entity.level.tiled.TiledObject@44740933, com.almasb.fxgl.entity.level.tiled.TiledObject@6f955574, com.almasb.fxgl.entity.level.tiled.TiledObject@b75c2de, com.almasb.fxgl.entity.level.tiled.TiledObject@7e2c9241, com.almasb.fxgl.entity.level.tiled.TiledObject@1a752126, com.almasb.fxgl.entity.level.tiled.TiledObject@5f8ef9e9, com.almasb.fxgl.entity.level.tiled.TiledObject@7ac8a3f4, com.almasb.fxgl.entity.level.tiled.TiledObject@60ec8876, com.almasb.fxgl.entity.level.tiled.TiledObject@53a3f95c, com.almasb.fxgl.entity.level.tiled.TiledObject@7bca1370, com.almasb.fxgl.entity.level.tiled.TiledObject@4422d8fe, com.almasb.fxgl.entity.level.tiled.TiledObject@40095734, com.almasb.fxgl.entity.level.tiled.TiledObject@cac2f70, com.almasb.fxgl.entity.level.tiled.TiledObject@2756fc06, com.almasb.fxgl.entity.level.tiled.TiledObject@7561353a, com.almasb.fxgl.entity.level.tiled.TiledObject@7fdb6c55, com.almasb.fxgl.entity.level.tiled.TiledObject@12e10b71, com.almasb.fxgl.entity.level.tiled.TiledObject@2c773e7, com.almasb.fxgl.entity.level.tiled.TiledObject@7ef34e60, com.almasb.fxgl.entity.level.tiled.TiledObject@5a6e3c2f, com.almasb.fxgl.entity.level.tiled.TiledObject@40ce0e90, com.almasb.fxgl.entity.level.tiled.TiledObject@792f1525, com.almasb.fxgl.entity.level.tiled.TiledObject@1d4bc42e, com.almasb.fxgl.entity.level.tiled.TiledObject@36ef0cec, com.almasb.fxgl.entity.level.tiled.TiledObject@6653e2f, com.almasb.fxgl.entity.level.tiled.TiledObject@76285fb, com.almasb.fxgl.entity.level.tiled.TiledObject@444b4b8d, com.almasb.fxgl.entity.level.tiled.TiledObject@a8db784, com.almasb.fxgl.entity.level.tiled.TiledObject@253674bc, com.almasb.fxgl.entity.level.tiled.TiledObject@36e870bc, com.almasb.fxgl.entity.level.tiled.TiledObject@286142cf, com.almasb.fxgl.entity.level.tiled.TiledObject@4fb7f1d0, com.almasb.fxgl.entity.level.tiled.TiledObject@5932ff0e, com.almasb.fxgl.entity.level.tiled.TiledObject@2c2a0904, com.almasb.fxgl.entity.level.tiled.TiledObject@eff4174, com.almasb.fxgl.entity.level.tiled.TiledObject@7e36180a, com.almasb.fxgl.entity.level.tiled.TiledObject@3032524d, com.almasb.fxgl.entity.level.tiled.TiledObject@4c2c0f66, com.almasb.fxgl.entity.level.tiled.TiledObject@38ac0376, com.almasb.fxgl.entity.level.tiled.TiledObject@7694aa21, com.almasb.fxgl.entity.level.tiled.TiledObject@54163e84, com.almasb.fxgl.entity.level.tiled.TiledObject@78ed5c5f, com.almasb.fxgl.entity.level.tiled.TiledObject@20824787, com.almasb.fxgl.entity.level.tiled.TiledObject@73942414, com.almasb.fxgl.entity.level.tiled.TiledObject@1693c6fc, com.almasb.fxgl.entity.level.tiled.TiledObject@40e6fd5, com.almasb.fxgl.entity.level.tiled.TiledObject@3682beac, com.almasb.fxgl.entity.level.tiled.TiledObject@646498ec, com.almasb.fxgl.entity.level.tiled.TiledObject@6c4806ba, com.almasb.fxgl.entity.level.tiled.TiledObject@1bcfbc21, com.almasb.fxgl.entity.level.tiled.TiledObject@381b062a, com.almasb.fxgl.entity.level.tiled.TiledObject@78785a3d, com.almasb.fxgl.entity.level.tiled.TiledObject@5429ee5e, com.almasb.fxgl.entity.level.tiled.TiledObject@32e16e4e, com.almasb.fxgl.entity.level.tiled.TiledObject@522b146e, com.almasb.fxgl.entity.level.tiled.TiledObject@68b815a4, com.almasb.fxgl.entity.level.tiled.TiledObject@73784df3, com.almasb.fxgl.entity.level.tiled.TiledObject@4ad2cecc, com.almasb.fxgl.entity.level.tiled.TiledObject@40d02b9c, com.almasb.fxgl.entity.level.tiled.TiledObject@68ed1317, com.almasb.fxgl.entity.level.tiled.TiledObject@594bcc2c, com.almasb.fxgl.entity.level.tiled.TiledObject@533cd67, com.almasb.fxgl.entity.level.tiled.TiledObject@44fe9a96, com.almasb.fxgl.entity.level.tiled.TiledObject@440b5cb5, com.almasb.fxgl.entity.level.tiled.TiledObject@4326d2b4, com.almasb.fxgl.entity.level.tiled.TiledObject@58657742, com.almasb.fxgl.entity.level.tiled.TiledObject@687f7cf2, com.almasb.fxgl.entity.level.tiled.TiledObject@768f6bbc, com.almasb.fxgl.entity.level.tiled.TiledObject@349a4ab, com.almasb.fxgl.entity.level.tiled.TiledObject@70e51ce7, com.almasb.fxgl.entity.level.tiled.TiledObject@63ee66e5, com.almasb.fxgl.entity.level.tiled.TiledObject@6e3123af, com.almasb.fxgl.entity.level.tiled.TiledObject@2013ae3e, com.almasb.fxgl.entity.level.tiled.TiledObject@78499cff, com.almasb.fxgl.entity.level.tiled.TiledObject@6800145d, com.almasb.fxgl.entity.level.tiled.TiledObject@f4b6ea9, com.almasb.fxgl.entity.level.tiled.TiledObject@32145320, com.almasb.fxgl.entity.level.tiled.TiledObject@60e9ff9, com.almasb.fxgl.entity.level.tiled.TiledObject@6ec4d199, com.almasb.fxgl.entity.level.tiled.TiledObject@3aaed4ce, com.almasb.fxgl.entity.level.tiled.TiledObject@2ab31de8, com.almasb.fxgl.entity.level.tiled.TiledObject@58b0be10, com.almasb.fxgl.entity.level.tiled.TiledObject@1030f486, com.almasb.fxgl.entity.level.tiled.TiledObject@5cf45aea, com.almasb.fxgl.entity.level.tiled.TiledObject@6e1a40c1, com.almasb.fxgl.entity.level.tiled.TiledObject@3307332c, com.almasb.fxgl.entity.level.tiled.TiledObject@2404650e, com.almasb.fxgl.entity.level.tiled.TiledObject@5a59586e, com.almasb.fxgl.entity.level.tiled.TiledObject@66f917ac, com.almasb.fxgl.entity.level.tiled.TiledObject@6c6dd60c, com.almasb.fxgl.entity.level.tiled.TiledObject@6bc6e29a, com.almasb.fxgl.entity.level.tiled.TiledObject@7b4c4da4, com.almasb.fxgl.entity.level.tiled.TiledObject@55a66116, com.almasb.fxgl.entity.level.tiled.TiledObject@57790018, com.almasb.fxgl.entity.level.tiled.TiledObject@b77ea5f, com.almasb.fxgl.entity.level.tiled.TiledObject@12cfb7f8, com.almasb.fxgl.entity.level.tiled.TiledObject@7407ca66, com.almasb.fxgl.entity.level.tiled.TiledObject@6be17d3e, com.almasb.fxgl.entity.level.tiled.TiledObject@5ff0570f, com.almasb.fxgl.entity.level.tiled.TiledObject@30ef4b7e, com.almasb.fxgl.entity.level.tiled.TiledObject@7af1f3ff, com.almasb.fxgl.entity.level.tiled.TiledObject@1a196912, com.almasb.fxgl.entity.level.tiled.TiledObject@470c0d71, com.almasb.fxgl.entity.level.tiled.TiledObject@d720a55, com.almasb.fxgl.entity.level.tiled.TiledObject@78697e0f, com.almasb.fxgl.entity.level.tiled.TiledObject@29e9c9e9, com.almasb.fxgl.entity.level.tiled.TiledObject@ea92e20, com.almasb.fxgl.entity.level.tiled.TiledObject@1394ad02, com.almasb.fxgl.entity.level.tiled.TiledObject@20be3079, com.almasb.fxgl.entity.level.tiled.TiledObject@477f0306, com.almasb.fxgl.entity.level.tiled.TiledObject@e0ede7, com.almasb.fxgl.entity.level.tiled.TiledObject@36aabc44, com.almasb.fxgl.entity.level.tiled.TiledObject@67c67f10, com.almasb.fxgl.entity.level.tiled.TiledObject@589e27dd, com.almasb.fxgl.entity.level.tiled.TiledObject@5f9676fc, com.almasb.fxgl.entity.level.tiled.TiledObject@3cbdb9d6, com.almasb.fxgl.entity.level.tiled.TiledObject@68d76fae, com.almasb.fxgl.entity.level.tiled.TiledObject@41de1da6, com.almasb.fxgl.entity.level.tiled.TiledObject@2d93a2f7, com.almasb.fxgl.entity.level.tiled.TiledObject@7cb1dd9a, com.almasb.fxgl.entity.level.tiled.TiledObject@2f4867bd, com.almasb.fxgl.entity.level.tiled.TiledObject@1eca7cdf, com.almasb.fxgl.entity.level.tiled.TiledObject@2efef1eb, com.almasb.fxgl.entity.level.tiled.TiledObject@5c51a4a3, com.almasb.fxgl.entity.level.tiled.TiledObject@3048451b, com.almasb.fxgl.entity.level.tiled.TiledObject@7da9fb49, com.almasb.fxgl.entity.level.tiled.TiledObject@24012cbe, com.almasb.fxgl.entity.level.tiled.TiledObject@7524f021, com.almasb.fxgl.entity.level.tiled.TiledObject@7b61303, com.almasb.fxgl.entity.level.tiled.TiledObject@35f7d30f, com.almasb.fxgl.entity.level.tiled.TiledObject@183e6dd3, com.almasb.fxgl.entity.level.tiled.TiledObject@4a49230d, com.almasb.fxgl.entity.level.tiled.TiledObject@7dd00f4c, com.almasb.fxgl.entity.level.tiled.TiledObject@7634d452, com.almasb.fxgl.entity.level.tiled.TiledObject@1d0f7fb2, com.almasb.fxgl.entity.level.tiled.TiledObject@1e5d6655, com.almasb.fxgl.entity.level.tiled.TiledObject@638aa0bd, com.almasb.fxgl.entity.level.tiled.TiledObject@33cc7eda, com.almasb.fxgl.entity.level.tiled.TiledObject@555875fe, com.almasb.fxgl.entity.level.tiled.TiledObject@20c2cece, com.almasb.fxgl.entity.level.tiled.TiledObject@167b0d23, com.almasb.fxgl.entity.level.tiled.TiledObject@46919b98, com.almasb.fxgl.entity.level.tiled.TiledObject@5070f131, com.almasb.fxgl.entity.level.tiled.TiledObject@66f2e14f, com.almasb.fxgl.entity.level.tiled.TiledObject@282efaa7, com.almasb.fxgl.entity.level.tiled.TiledObject@6229e961, com.almasb.fxgl.entity.level.tiled.TiledObject@3587656c, com.almasb.fxgl.entity.level.tiled.TiledObject@440e020a, com.almasb.fxgl.entity.level.tiled.TiledObject@1baa33ee, com.almasb.fxgl.entity.level.tiled.TiledObject@36e5b31b, com.almasb.fxgl.entity.level.tiled.TiledObject@38471cae, com.almasb.fxgl.entity.level.tiled.TiledObject@c6d57fe, com.almasb.fxgl.entity.level.tiled.TiledObject@461220de, com.almasb.fxgl.entity.level.tiled.TiledObject@5d743e6c, com.almasb.fxgl.entity.level.tiled.TiledObject@5dd6fb00, com.almasb.fxgl.entity.level.tiled.TiledObject@3b6285e3, com.almasb.fxgl.entity.level.tiled.TiledObject@6ca14681, com.almasb.fxgl.entity.level.tiled.TiledObject@10da8227, com.almasb.fxgl.entity.level.tiled.TiledObject@7a3e75c7, com.almasb.fxgl.entity.level.tiled.TiledObject@555cbafe, com.almasb.fxgl.entity.level.tiled.TiledObject@332f7b9a, com.almasb.fxgl.entity.level.tiled.TiledObject@77200c62, com.almasb.fxgl.entity.level.tiled.TiledObject@7eb9cf0c, com.almasb.fxgl.entity.level.tiled.TiledObject@4e02116f, com.almasb.fxgl.entity.level.tiled.TiledObject@6b9509e, com.almasb.fxgl.entity.level.tiled.TiledObject@710d1f37, com.almasb.fxgl.entity.level.tiled.TiledObject@41fc7fb5, com.almasb.fxgl.entity.level.tiled.TiledObject@1fab978c], opacity=0.0, draworder=)], tilesets=[], backgroundcolor=, renderorder=right-down, nextobjectid=567, version=1, tiledversion=1.3.1, type=map, infinite=false, properties={}, propertytypes={})
+18:48:14.939 [FXGL Background Thread 1 ] DEBUG TMXLevelLoader       - Creating tile layer entities
+18:48:14.939 [FXGL Background Thread 1 ] DEBUG TMXLevelLoader       - Creating object layer entities
+18:48:14.987 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from file system: /assets/textures/robot/robot64.png
+18:48:14.991 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:14.994 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:14.996 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:14.998 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.000 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.002 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.004 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.006 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.008 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.011 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.013 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.015 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.018 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.020 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.023 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.025 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.027 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.029 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.030 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.032 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.034 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.036 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.037 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.039 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.041 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.043 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.045 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.047 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.048 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.050 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.051 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.053 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.054 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.056 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.057 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.059 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.060 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.062 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.064 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.065 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.067 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.069 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.070 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.072 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.073 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.075 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.076 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.078 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.079 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.081 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.084 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.086 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from file system: /assets/textures/knight/KnightIdle.png
+18:48:15.087 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from file system: /assets/textures/knight/KnightRun.png
+18:48:15.095 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.099 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.101 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.102 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.106 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.108 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.114 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.115 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.116 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.118 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.119 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.127 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.128 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.130 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.133 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.134 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.165 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.167 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.169 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.171 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.173 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.174 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/robot/robot64.png
+18:48:15.178 [FXGL Background Thread 1 ] DEBUG GameWorld            - Clearing removable entities
+18:48:15.178 [FXGL Background Thread 1 ] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@78b1f5cf
+18:48:15.213 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from file system: /assets/textures/background/Background5760.png
+18:48:15.443 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from file system: /assets/textures/background/UpperBackground5760.png
+18:48:15.861 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Physics
+18:48:15.862 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing UI
+18:48:15.862 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initialization Complete
+18:48:15.862 [FXGL Background Thread 1 ] INFO  InitAppTask          - Game initialization took: 1,004 sec
+18:48:15.877 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+18:48:15.925 [JavaFX Application Thread] DEBUG Engine               - Removing overlay from LoadingScene and adding to GameScene
+18:48:15.925 [JavaFX Application Thread] DEBUG MainWindow           - LoadingScene -> GameScene
+18:50:01.494 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from file system: /assets/textures/bullet/bullet.png
+18:50:02.613 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:04.901 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:05.094 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:06.613 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:08.197 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:10.357 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:12.935 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:14.854 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:16.758 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:17.861 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:19.206 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:22.502 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:25.366 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:31.701 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:33.029 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:36.325 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:38.133 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:39.670 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:43.845 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:50:49.349 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:51:24.373 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:51:28.661 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:51:41.045 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:51:55.510 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:51:56.981 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:52:04.181 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:52:05.702 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:52:07.333 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:52:09.765 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:52:10.757 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:52:16.245 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:52:21.109 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:52:26.534 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/bullet/bullet.png
+18:52:31.766 [JavaFX Application Thread] DEBUG Engine               - Exiting FXGL
+18:52:31.766 [JavaFX Application Thread] DEBUG Engine               - Shutting down background threads
+18:52:31.766 [JavaFX Application Thread] DEBUG Engine               - Saving FXGL system data
+18:52:31.768 [JavaFX Application Thread] DEBUG FSServiceImpl        - Writing to: D:\_Projekty\Java\TheGame\BioTechGame\system\fxgl.bundle
+18:52:31.769 [JavaFX Application Thread] DEBUG Engine               - Closing logger and exiting JavaFX
