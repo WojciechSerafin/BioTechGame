@@ -16,10 +16,16 @@ public class MainMenu extends FXGLMenu {
   public MainMenu() {
     super(MenuType.MAIN_MENU);
     
-    var button = new GameButton("New Game", this::fireNewGame);
-    button.setTranslateX(FXGL.getAppWidth() / 2 - button.getWidth() / 2);
-    button.setTranslateY(FXGL.getAppHeight() / 2 - button.getHeight() / 2);
-    getMenuContentRoot().getChildren().add(button);
+    var newGameButton = new GameButton("New Game", this::fireNewGame);
+    newGameButton.setTranslateX(FXGL.getAppWidth() / 2 - newGameButton.getWidth() / 2);
+    newGameButton.setTranslateY(FXGL.getAppHeight() / 2 - newGameButton.getHeight() / 2);
+    getMenuContentRoot().getChildren().add(newGameButton);
+    
+    var exitGameButton = new GameButton("Exit", this::fireExit);
+    exitGameButton.setTranslateX(FXGL.getAppWidth() / 2 - exitGameButton.getWidth() / 2);
+    exitGameButton.setTranslateY(FXGL.getAppHeight() / 2 - exitGameButton.getHeight() / 2 + exitGameButton.getHeight() * 1.5);
+    getMenuContentRoot().getChildren().add(exitGameButton);
+    
   }
   
   @Override
@@ -51,24 +57,4 @@ public class MainMenu extends FXGLMenu {
   protected Node createVersionView(String s) {
     return new Text();
   }
-  
-  /*private static class GameButton extends StackPane {
-    public GameButton (String name, Runnable action) {
-      var bg = new Rectangle(200, 40, Color.BLACK);
-      bg.setStroke(Color.WHITE);
-      
-      var text = FXGL.getUIFactory().newText(name, Color.WHITE, 18);
-      
-      bg.fillProperty().bind(
-          Bindings.when(hoverProperty()).then(Color.WHITE).otherwise(Color.BLACK)
-      );
-      text.fillProperty().bind(
-          Bindings.when(hoverProperty()).then(Color.BLACK).otherwise(Color.WHITE)
-      );
-      
-      setOnMouseClicked(e -> action.run());
-      
-      getChildren().addAll(bg, text);
-    }
-  }*/
 }

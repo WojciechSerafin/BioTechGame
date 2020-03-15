@@ -8,12 +8,12 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsWorld;
-import fxglgames.UI.GameOverMenu;
+import fxglgames.UI.GameMenu;
 import fxglgames.UI.MainMenu;
 import fxglgames.components.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
-import org.jetbrains.annotations.NotNull;
+import javafx.scene.shape.Circle;
 
 
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -26,8 +26,10 @@ public class BioTechApp extends GameApplication {
 
   @Override
   protected void initSettings(GameSettings gameSettings) {
-    gameSettings.setHeight(1080);
-    gameSettings.setWidth(1920);
+    gameSettings.setHeight(540);
+    gameSettings.setWidth(960);
+    gameSettings.setFullScreenAllowed(true);
+    gameSettings.setFullScreenFromStart(true);
     gameSettings.setTitle("The Bio Tech Game");
     gameSettings.setManualResizeEnabled(false);
     gameSettings.setFullScreenAllowed(true);
@@ -40,7 +42,7 @@ public class BioTechApp extends GameApplication {
       }
       @Override
       public FXGLMenu newGameMenu() {
-        return new GameOverMenu();
+        return new GameMenu();
       }
     });
   }
@@ -53,7 +55,7 @@ public class BioTechApp extends GameApplication {
   @Override
   protected void initGame() {
     getGameWorld().addEntityFactory(new GameEntityFactory());
-    setLevelFromMap("tmx/TestTileddwa.tmx");
+    setLevelFromMap("tmx/TestTiledtrzy.tmx");
     spawn("background", 0/*getAppWidth() / -2*/, 0 /*getAppHeight() / -2*/);
     spawn("upperBackground", 0/*getAppWidth() / -2*/, 0 /*getAppHeight() / -2*/);
     player = getGameWorld().getEntitiesByType(EntityType.PLAYER).get(0);
@@ -61,7 +63,9 @@ public class BioTechApp extends GameApplication {
     playerComponent = player.getComponent(PlayerComponent.class);
     attacksComponent = player.getComponent(AttacksComponent.class);
     
-    getGameScene().getViewport().bindToEntity(player, 1000, 500);
+    getGameScene().getViewport().bindToEntity(player, getAppWidth() / 2, getAppHeight() / 2);
+    getGameScene().getViewport().setLazy(true);
+    getGameScene().getViewport().setBounds(0, 0, 5760, 5760);
   }
 
   @Override

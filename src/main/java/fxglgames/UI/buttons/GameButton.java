@@ -10,7 +10,8 @@ public class GameButton extends StackPane {
   public GameButton(String name, Runnable action) {
     var bg = new Rectangle(200, 40, Color.BLACK);
     bg.setStroke(Color.WHITE);
-    
+    this.setWidth(200);
+    this.setHeight(40);
     var text = FXGL.getUIFactory().newText(name, Color.WHITE, 18);
     
     bg.fillProperty().bind(

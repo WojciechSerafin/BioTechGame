@@ -26,9 +26,12 @@ public class GameEntityFactory implements EntityFactory {
 
   @Spawns("wall")
   public Entity newWall(SpawnData data) {
+    Rectangle r = new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"));
+    r.setStroke(Color.RED);
+    r.setFill(Color.TRANSPARENT);
     return entityBuilder().from(data)
                           .type(EntityType.WALL)
-                          //.viewWithBBox(new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"), Color.RED))
+                          .view(r)
                           .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
                           .with(new PhysicsComponent())
                           .with(new CollidableComponent(true))
@@ -63,8 +66,7 @@ public class GameEntityFactory implements EntityFactory {
     HPComponent hpComponent = new HPComponent(-18, -20, Color.YELLOW,0.0,100.0);
     //hpComponent.getBar().setScaleX(0.3d);
     //hpComponent.getBar().setScaleY(0.3d);
-
-
+    
     return entityBuilder().from(data)
                           .type(EntityType.PLAYER)
                           .viewWithBBox("robot/robot64.png")
