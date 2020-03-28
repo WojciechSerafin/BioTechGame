@@ -3,6 +3,7 @@ package fxglgames.components;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
+import fxglgames.BioTechApp;
 import fxglgames.EntityType;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -42,7 +43,9 @@ public class EnemyComponent extends Component {
   @Override
   public void onAdded() {
     entity.getTransformComponent().setScaleOrigin(entity.getCenter());
-    entity.getViewComponent().addChild(getFollowRangeCircle());
+    if (BioTechApp.DEBUG) {
+      entity.getViewComponent().addChild(getFollowRangeCircle());
+    }
     super.onAdded();
   }
   

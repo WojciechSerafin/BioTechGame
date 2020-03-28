@@ -53,7 +53,7 @@ public class AttacksComponent extends GenericBarViewComponent {
         if (nextAttack == null || now.getTime() > nextAttack.getTime()) {
             nextAttack = Date.from(Instant.now().plusMillis(Math.round(attackSpeed * 1000)));
             Point2D dir = new Point2D(getInput().getMouseXWorld() - entity.getX() - entity.getWidth() / 2,
-                                     getInput().getMouseYWorld() - entity.getY() - entity.getHeight() / 2);
+                                      getInput().getMouseYWorld() - entity.getY() - entity.getHeight() / 2);
 
             spawn("bullet", new SpawnData(entity.getCenter()).put("dir", dir)
                                                                         .put("bulletSpeed", bulletSpeed));

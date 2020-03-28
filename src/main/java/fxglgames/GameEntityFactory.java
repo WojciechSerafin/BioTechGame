@@ -1,5 +1,6 @@
 package fxglgames;
 
+import com.almasb.fxgl.dsl.EntityBuilder;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
@@ -26,16 +27,20 @@ public class GameEntityFactory implements EntityFactory {
 
   @Spawns("wall")
   public Entity newWall(SpawnData data) {
-    Rectangle r = new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"));
-    r.setStroke(Color.RED);
-    r.setFill(Color.TRANSPARENT);
-    return entityBuilder().from(data)
-                          .type(EntityType.WALL)
-                          .view(r)
-                          .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
-                          .with(new PhysicsComponent())
-                          .with(new CollidableComponent(true))
-                          .build();
+    EntityBuilder entityBuilder = entityBuilder().from(data)
+      .type(EntityType.WALL)
+      .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+      .with(new PhysicsComponent())
+      .with(new CollidableComponent(true));
+    
+    if (BioTechApp.DEBUG) {
+      Rectangle r = new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"));
+      r.setStroke(Color.RED);
+      r.setFill(Color.TRANSPARENT);
+      //entityBuilder.view(r);
+    }
+    
+    return entityBuilder.build();
   }
   @Spawns("")
   public Entity newNothing(SpawnData data) {
@@ -55,6 +60,7 @@ public class GameEntityFactory implements EntityFactory {
             .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
             .with(new PhysicsComponent())
             .with(new CollidableComponent(true))
+            .with(new FakeWallComponent())
             .build();
   }
 
@@ -68,6 +74,7 @@ public class GameEntityFactory implements EntityFactory {
     //hpComponent.getBar().setScaleY(0.3d);
     
     return entityBuilder().from(data)
+                          .zIndex(2)
                           .type(EntityType.PLAYER)
                           .viewWithBBox("robot/robot64.png")
                           //.viewWithBBox(new Rectangle(64,64, Color.BLUE))
@@ -78,6 +85,7 @@ public class GameEntityFactory implements EntityFactory {
                           .with(new PlayerComponent())
                           .with(new AttacksComponent(-35,35,Color.WHITE))
                           .with(new CollidableComponent(true))
+                          .with(new ShadowAndLightComponent())
                           .build();
   }
 
@@ -117,7 +125,7 @@ public class GameEntityFactory implements EntityFactory {
   @Spawns("background")
   public Entity newBackground(SpawnData data) {
     return entityBuilder().from(data)
-                          .view("background/Background5760.png")
+                          .view("background/background.png")
                           //.view(new Rectangle(5744 + FXGL.getAppWidth(),5744 + FXGL.getAppHeight(), Color.BLACK))
                           .zIndex(-1)
                           .with(new IrremovableComponent())
@@ -127,9 +135,9 @@ public class GameEntityFactory implements EntityFactory {
   @Spawns("upperBackground")
   public Entity newUpperBackground(SpawnData data) {
     return entityBuilder().from(data)
-            .view("background/UpperBackground5760.png")
+            //.view("background/upperground.png")
             //.view(new Rectangle(5744 + FXGL.getAppWidth(),5744 + FXGL.getAppHeight(), Color.BLACK))
-            .zIndex(2)
+            .zIndex(3)
             .with(new IrremovableComponent())
             .build();
   }

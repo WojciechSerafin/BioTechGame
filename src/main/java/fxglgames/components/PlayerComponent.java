@@ -4,21 +4,24 @@ import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.component.Required;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
+import fxglgames.BioTechApp;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 
-import java.util.Date;
 import java.util.HashMap;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.image;
-import static com.almasb.fxgl.dsl.FXGL.*;
 
 @Required(MoveComponent.class)
 public class PlayerComponent extends Component {
   private MoveComponent moveComponent;
   private AnimatedTexture texture;
   private HashMap<String, AnimationChannel> animations = new HashMap<String, AnimationChannel>();
+  private int playerViewRadius = 2000;
 
   
   public PlayerComponent() {
@@ -43,6 +46,9 @@ public class PlayerComponent extends Component {
   @Override
   public void onAdded() {
     entity.getTransformComponent().setScaleOrigin(entity.getBoundingBoxComponent().getCenterLocal());
+    if (BioTechApp.DEBUG) {
+      entity.getViewComponent().addChild(getViewRangeField());
+    }
     //entity.getViewComponent().addChild(texture);
   }
   
@@ -63,5 +69,18 @@ public class PlayerComponent extends Component {
       }
     }
   }
+  public Node getViewRangeField() {
+    //Circle c = new Circle(entity.getWidth()/2, entity.getHeight()/2, this.playerViewRadius);
+    Rectangle c = new Rectangle(entity.getWidth()/2 - getPlayerViewRadius()/2,
+                                entity.getHeight()/2 - getPlayerViewRadius()/2,
+                                getPlayerViewRadius(),
+                                getPlayerViewRadius());
+    c.setStroke(Color.GREEN);
+    c.setFill(Color.TRANSPARENT);
+    return c;
+  }
   
+  public int getPlayerViewRadius() {
+    return playerViewRadius;
+  }
 }

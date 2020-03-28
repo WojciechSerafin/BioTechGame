@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.FXGLMenu;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.SceneFactory;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
@@ -19,6 +20,8 @@ import javafx.scene.shape.Circle;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class BioTechApp extends GameApplication {
+  public static final boolean DEBUG = true;
+  
   private Entity player;
   private MoveComponent moveComponent;
   private PlayerComponent playerComponent;
@@ -55,9 +58,9 @@ public class BioTechApp extends GameApplication {
   @Override
   protected void initGame() {
     getGameWorld().addEntityFactory(new GameEntityFactory());
-    setLevelFromMap("tmx/TestTiledtrzy.tmx");
-    spawn("background", 0/*getAppWidth() / -2*/, 0 /*getAppHeight() / -2*/);
-    spawn("upperBackground", 0/*getAppWidth() / -2*/, 0 /*getAppHeight() / -2*/);
+    setLevelFromMap("tmx/test.tmx");
+    spawn("background", 0, 0);
+    spawn("upperBackground", 0, 0);
     player = getGameWorld().getEntitiesByType(EntityType.PLAYER).get(0);
     moveComponent = player.getComponent(MoveComponent.class);
     playerComponent = player.getComponent(PlayerComponent.class);
@@ -88,7 +91,7 @@ public class BioTechApp extends GameApplication {
       @Override
       protected void onCollisionBegin(Entity a, Entity b) {
         a.removeFromWorld();
-        b.removeFromWorld();
+        b.getComponent(FakeWallComponent.class).setToDelete(Boolean.TRUE);
       }
     });
     physics.addCollisionHandler(new CollisionHandler(EntityType.BULLET, EntityType.ENEMY) {
