@@ -1,6 +1,5 @@
 package fxglgames.components;
 
-import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.component.Required;
@@ -29,35 +28,37 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 @Required(PlayerComponent.class)
 public class ShadowAndLightComponent extends Component {
+  
+  private static final String SHADOW_COLOR = "#0d0d0dee";
+  private static final BlendMode SHADOW_BLEND = BlendMode.MULTIPLY;
+  private static final String CLOSE_LIGHT_COLOR = "#FFFFFF55";
+  private static final String FAR_LIGHT_COLOR = "#33333300";
+  private static final BlendMode LIGHT_BLEND = BlendMode.OVERLAY;
+  private static final Long LIGHT_RANGE = 300L;
+  
+  
+  
   Line l = new Line(0,0, 0, 0);
   PlayerComponent playerComponent;
   
   AnchorPane light = new AnchorPane();
   AnchorPane shadow = new AnchorPane();
   
-  List<Shape> rays = new ArrayList<Shape>();
-  private Stream<Entity> scianyWOkolicy;
-  private Set<Point> points = new HashSet<Point>();
-  private Set<Segment> segments = new HashSet<Segment>();
+  List<Shape> rays = new ArrayList<>();
+  private Set<Point> points = new HashSet<>();
+  private Set<Segment> segments = new HashSet<>();
   
   @Override
   public void onAdded() {
     super.onAdded();
     
-    l.setStroke(Color.RED);
-    l.setFill(Color.RED);
-    l.setStartX(0 + entity.getHeight()/2);
-    l.setStartY(0 + entity.getWidth()/2);
-    //entity.getViewComponent().addChild(l);
-    
-    shadow.getChildren().add( new Rectangle( 0 + entity.getWidth()/2- playerComponent.getPlayerViewRadius()/2,
-                                             0 + entity.getHeight()/2 - playerComponent.getPlayerViewRadius()/2,
+    shadow.getChildren().add( new Rectangle( 0 + entity.getWidth()/2- playerComponent.getPlayerViewRadius()/2.0D,
+                                             0 + entity.getHeight()/2 - playerComponent.getPlayerViewRadius()/2.0D,
                                              playerComponent.getPlayerViewRadius(),
                                              playerComponent.getPlayerViewRadius() ) {{
-      setFill( Color.valueOf( "#0d0d0dee" ) );
-      setBlendMode( BlendMode.MULTIPLY );
+      setFill( Color.valueOf( SHADOW_COLOR ) );
+      setBlendMode( SHADOW_BLEND );
     }} ) ;
-    
     entity.getViewComponent().addChild(shadow);
     entity.getViewComponent().addChild(light);
   }
@@ -69,18 +70,18 @@ public class ShadowAndLightComponent extends Component {
     l.setEndY((getInput().getMouseYWorld() - entity.getY()) * 2 - entity.getHeight()/2);
   
   
-    scianyWOkolicy = getGameWorld().getEntitiesByType(EntityType.WALL, EntityType.FAKE_WALL)
-                                                .stream()
-                                                .filter(w -> w.isWithin(new Rectangle2D(entity.getX() + entity.getWidth()/2 - playerComponent.getPlayerViewRadius()/2,
-                                                  entity.getY() + entity.getHeight()/2 - playerComponent.getPlayerViewRadius()/2,
-                                                  playerComponent.getPlayerViewRadius(),
-                                                  playerComponent.getPlayerViewRadius())));
+    Stream<Entity> scianyWOkolicy = getGameWorld().getEntitiesByType(EntityType.WALL, EntityType.FAKE_WALL)
+      .stream()
+      .filter(w -> w.isWithin(new Rectangle2D(entity.getX() + entity.getWidth() / 2 - playerComponent.getPlayerViewRadius() / 2.0D,
+        entity.getY() + entity.getHeight() / 2 - playerComponent.getPlayerViewRadius() / 2.0D,
+        playerComponent.getPlayerViewRadius(),
+        playerComponent.getPlayerViewRadius())));
     if (BioTechApp.DEBUG) {
       segments.forEach(segment -> entity.getViewComponent().removeChild(segment.getAsLine()));
     }
     segments.clear();
     points.clear();
-    /*points =*/ scianyWOkolicy.forEach( ( w ) -> {
+    scianyWOkolicy.forEach( (w ) -> {
       //góra poziomo
       segments.add(new Segment(new Point(w.getX() - entity.getX(),
                                          w.getY() - entity.getY()),
@@ -107,28 +108,15 @@ public class ShadowAndLightComponent extends Component {
                                   new Point(w.getX() - entity.getX() + w.getWidth(),w.getY() - entity.getY() + w.getHeight())));
     });
     //Dodanie rogów zasięgu widoku
-    points.add(new Point(entity.getX() - playerComponent.getPlayerViewRadius()/2,
-                         entity.getY() - playerComponent.getPlayerViewRadius()/2));
-    points.add(new Point(entity.getX() + playerComponent.getPlayerViewRadius()/2,
-                         entity.getY() - playerComponent.getPlayerViewRadius()/2));
-    points.add(new Point(entity.getX() - playerComponent.getPlayerViewRadius()/2,
-                         entity.getY() + playerComponent.getPlayerViewRadius()/2));
-    points.add(new Point(entity.getX() + playerComponent.getPlayerViewRadius()/2,
-                         entity.getY() + playerComponent.getPlayerViewRadius()/2));
-    //usunięcie poprzednich raysów
-    if (BioTechApp.DEBUG) {
-      //rays.forEach(r -> entity.getViewComponent().removeChild(r));
-    }
-    //rays.clear();
-    //generowanie nowych raysów
-    //points.forEach(p -> rays.add(new Line(0 + entity.getWidth()/2, 0 + entity.getHeight()/2,
-    //  p.getX() - entity.getX(),
-    // p.getY() - entity.getY())));
-    //dodawanie wygenerowanych raysów
-    if (BioTechApp.DEBUG) {
-      //rays.forEach(r -> entity.getViewComponent().addChild(r));
-      //segments.forEach(segment -> entity.getViewComponent().addChild(segment.getAsLine()));
-    }
+    points.add(new Point(entity.getX() - playerComponent.getPlayerViewRadius()/2.0D,
+                         entity.getY() - playerComponent.getPlayerViewRadius()/2.0D));
+    points.add(new Point(entity.getX() + playerComponent.getPlayerViewRadius()/2.0D,
+                         entity.getY() - playerComponent.getPlayerViewRadius()/2.0D));
+    points.add(new Point(entity.getX() - playerComponent.getPlayerViewRadius()/2.0D,
+                         entity.getY() + playerComponent.getPlayerViewRadius()/2.0D));
+    points.add(new Point(entity.getX() + playerComponent.getPlayerViewRadius()/2.0D,
+                         entity.getY() + playerComponent.getPlayerViewRadius()/2.0D));
+    
     renderRays();
   }
   
@@ -140,10 +128,18 @@ public class ShadowAndLightComponent extends Component {
       .sorted()
       .map( a -> {
         Segment s = new Segment( mp, new Point( mp.getX() + Math.cos( a ), mp.getY() + Math.sin( a ) ) );
-        Intersection i = segmentSet.stream()
-          .map( ss -> Intersection.intersect( s, ss ) )
-          .min( ( o1, o2 ) -> Double.compare( o1.getDistance(), o2.getDistance() ) ).get();
-        return i;
+        boolean seen = false;
+        Intersection best = null;
+        Comparator<Intersection> comparator = Comparator.comparingDouble(Intersection::getDistance);
+        for (Segment ss : segmentSet) {
+          Intersection intersect = Intersection.intersect(s, ss);
+          if (!seen || comparator.compare(intersect, best) < 0) {
+            seen = true;
+            best = intersect;
+          }
+        }
+        return (!seen ? Optional.<Intersection>empty() : Optional.of(best)).get();
+        
       } )
       .filter( i -> i != Intersection.NONE )
       .map( Intersection::getPoint )
@@ -153,9 +149,9 @@ public class ShadowAndLightComponent extends Component {
         .flatMap( p -> Stream.of( p.getX(), p.getY() ) )
         .collect( Collectors.toList() ) );
     lightPoly.setFill( new RadialGradient( 0, 0/*.5*/, mp.getX(), mp.getY(),
-      800, false, CycleMethod.NO_CYCLE, new Stop( 0, Color.valueOf( "#FFFFFF55" ) ),
-      new Stop( 1, Color.valueOf( "#33333300" ) ) ) );
-    lightPoly.setBlendMode( BlendMode.OVERLAY );
+      LIGHT_RANGE, false, CycleMethod.NO_CYCLE, new Stop( 0, Color.valueOf( CLOSE_LIGHT_COLOR ) ),
+      new Stop( 1, Color.valueOf( FAR_LIGHT_COLOR ) ) ) );
+    lightPoly.setBlendMode( LIGHT_BLEND );
     lightPoly.setOpacity(1);
     return lightPoly ;
   }

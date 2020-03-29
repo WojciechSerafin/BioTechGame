@@ -42,6 +42,30 @@ public class GameEntityFactory implements EntityFactory {
     
     return entityBuilder.build();
   }
+
+  @Spawns("fakeWall")
+  public Entity newFakeWall(SpawnData data) {
+    return entityBuilder().from(data)
+      .type(EntityType.FAKE_WALL)
+      //.viewWithBBox(new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"), Color.RED))
+      .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+      .with(new PhysicsComponent())
+      .with(new CollidableComponent(true))
+      .with(new FakeWallComponent())
+      .build();
+  }
+
+  @Spawns("chest")
+  public Entity newChest(SpawnData data) {
+    return entityBuilder().from(data)
+      .type(EntityType.CHEST)
+      //.viewWithBBox(new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"), Color.RED))
+      .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+      .with(new PhysicsComponent())
+      .with(new CollidableComponent(true))
+      .build();
+  }
+
   @Spawns("")
   public Entity newNothing(SpawnData data) {
     return entityBuilder().from(data)
@@ -50,17 +74,6 @@ public class GameEntityFactory implements EntityFactory {
             //.bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
             //.with(new PhysicsComponent())
             //.with(new CollidableComponent(true))
-            .build();
-  }
-  @Spawns("fakeWall")
-  public Entity newFakeWall(SpawnData data) {
-    return entityBuilder().from(data)
-            .type(EntityType.FAKE_WALL)
-            //.viewWithBBox(new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"), Color.RED))
-            .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
-            .with(new PhysicsComponent())
-            .with(new CollidableComponent(true))
-            .with(new FakeWallComponent())
             .build();
   }
 
@@ -116,7 +129,7 @@ public class GameEntityFactory implements EntityFactory {
     return entityBuilder().from(data)
                           .type(EntityType.BULLET)
                           .viewWithBBox("bullet/bullet.png")
-                          .with(new ProjectileComponent(data.get("dir"), (Double)data.get("bulletSpeed")))
+                          .with(new ProjectileComponent(data.get("dir"), data.get("bulletSpeed")))
                           .with(new OffscreenCleanComponent())
                           .with(new BulletComponent(30))
                           .with(new CollidableComponent(true))
