@@ -58,8 +58,8 @@ public class GameEntityFactory implements EntityFactory {
   public Entity newChest(SpawnData data) {
     return entityBuilder().from(data)
       .type(EntityType.CHEST)
-      //.viewWithBBox(new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"), Color.RED))
-      .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+      .viewWithBBox("furniture/chest.png")
+      //.bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
       .with(new PhysicsComponent())
       .with(new CollidableComponent(true))
       .build();
