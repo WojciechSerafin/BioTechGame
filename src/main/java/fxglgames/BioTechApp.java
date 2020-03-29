@@ -58,7 +58,7 @@ public class BioTechApp extends GameApplication {
   @Override
   protected void initGame() {
     getGameWorld().addEntityFactory(new GameEntityFactory());
-    setLevelFromMap("tmx/test.tmx");
+    setLevelFromMap("tmx/TILED.tmx");
     spawn("background", 0, 0);
     spawn("upperBackground", 0, 0);
     player = getGameWorld().getEntitiesByType(EntityType.PLAYER).get(0);

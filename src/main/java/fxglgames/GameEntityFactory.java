@@ -125,7 +125,7 @@ public class GameEntityFactory implements EntityFactory {
   @Spawns("background")
   public Entity newBackground(SpawnData data) {
     return entityBuilder().from(data)
-                          .view("background/background.png")
+                          .view("background/Background5760.png")
                           //.view(new Rectangle(5744 + FXGL.getAppWidth(),5744 + FXGL.getAppHeight(), Color.BLACK))
                           .zIndex(-1)
                           .with(new IrremovableComponent())
@@ -135,7 +135,7 @@ public class GameEntityFactory implements EntityFactory {
   @Spawns("upperBackground")
   public Entity newUpperBackground(SpawnData data) {
     return entityBuilder().from(data)
-            //.view("background/upperground.png")
+            .view("background/UpperBackground5760.png")
             //.view(new Rectangle(5744 + FXGL.getAppWidth(),5744 + FXGL.getAppHeight(), Color.BLACK))
             .zIndex(3)
             .with(new IrremovableComponent())
