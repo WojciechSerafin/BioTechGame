@@ -34,7 +34,7 @@ public class ShadowAndLightComponent extends Component {
   private static final String CLOSE_LIGHT_COLOR = "#FFFFFF55";
   private static final String FAR_LIGHT_COLOR = "#33333300";
   private static final BlendMode LIGHT_BLEND = BlendMode.OVERLAY;
-  private static final Long LIGHT_RANGE = 300L;
+  private static final Long LIGHT_RANGE = 600L;
   
   
   
