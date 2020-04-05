@@ -17,11 +17,12 @@ public class HPComponent extends GenericBarViewComponent {
                        double maxValue) {
         super(-18, -20, color, initialValue, maxValue);
         this.curHealth.setValue(maxValue);
+        //this.getBar().
         valueProperty().bind(curHealth);
         getBar().setScaleX(0.75d);
         getBar().setScaleY(0.75d);
     }
-
+    
 
     /**
      *

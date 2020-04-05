@@ -57,9 +57,22 @@ public class GameEntityFactory implements EntityFactory {
 
   @Spawns("chest")
   public Entity newChest(SpawnData data) {
+    String textureName = data.get("textureNumber");
     return entityBuilder().from(data)
       .type(EntityType.CHEST)
-      .viewWithBBox("furniture/chest.png")
+      .viewWithBBox("furniture/chest_" + textureName + ".png")
+      //.bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+      .with(new PhysicsComponent())
+      .with(new CollidableComponent(true))
+      .build();
+  }
+  
+  @Spawns("furniture")
+  public Entity newFurniture(SpawnData data) {
+    String textureName = data.get("textureNumber");
+    return entityBuilder().from(data)
+      .type(EntityType.FURNITURE)
+      .viewWithBBox("furniture/furniture_" + textureName + ".png")
       //.bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
       .with(new PhysicsComponent())
       .with(new CollidableComponent(true))

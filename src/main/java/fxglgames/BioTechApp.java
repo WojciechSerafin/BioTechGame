@@ -73,7 +73,7 @@ public class BioTechApp extends GameApplication {
 
   @Override
   protected void initUI() {
-
+  
   }
 
   @Override
