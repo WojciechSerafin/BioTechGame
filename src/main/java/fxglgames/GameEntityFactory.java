@@ -56,7 +56,7 @@ public class GameEntityFactory implements EntityFactory {
   
   @Spawns("chest")
   public Entity newChest(SpawnData data) {
-    String textureName = data.get("textureNumber");
+    String textureName = data.get("textureName");
     return entityBuilder().from(data)
       .type(EntityType.CHEST)
       .viewWithBBox("furniture/chest_" + textureName + ".png")
@@ -68,7 +68,7 @@ public class GameEntityFactory implements EntityFactory {
   
   @Spawns("furniture")
   public Entity newFurniture(SpawnData data) {
-    String textureName = data.get("textureNumber");
+    String textureName = data.get("textureName");
     return entityBuilder().from(data)
       .type(EntityType.FURNITURE)
       .viewWithBBox("furniture/furniture_" + textureName + ".png")
