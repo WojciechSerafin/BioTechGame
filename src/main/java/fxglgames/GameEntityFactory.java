@@ -60,7 +60,6 @@ public class GameEntityFactory implements EntityFactory {
     String textureName = data.get("textureName");
     return entityBuilder().from(data)
       .type(EntityType.CHEST)
-      .zIndex(3)
       .viewWithBBox("furniture/chest_" + textureName + ".png")
       //.bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
       .with(new PhysicsComponent())
@@ -73,7 +72,6 @@ public class GameEntityFactory implements EntityFactory {
     String textureName = data.get("textureName");
     return entityBuilder().from(data)
       .type(EntityType.FURNITURE)
-      .zIndex(3)
       .viewWithBBox("furniture/furniture_" + textureName + ".png")
       //.bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
       .with(new PhysicsComponent())
@@ -98,15 +96,12 @@ public class GameEntityFactory implements EntityFactory {
     physics.setBodyType(BodyType.DYNAMIC);
 
     HPComponent hpComponent = new HPComponent(-18, -20, Color.YELLOW,0.0,100.0);
-    //hpComponent.getBar().setScaleX(0.3d);
-    //hpComponent.getBar().setScaleY(0.3d);
-    
+  
+    String textureName = data.get("textureName");
     return entityBuilder().from(data)
                           .zIndex(2)
                           .type(EntityType.PLAYER)
-                          .viewWithBBox("robot/robot64.png")
-                          //.viewWithBBox(new Rectangle(64,64, Color.BLUE))
-                          //.bbox(new HitBox(BoundingShape.box(24,30)))
+                          .viewWithBBox("robot/player_" + textureName + ".png")
                           .with(physics)
                           .with(hpComponent)
                           .with(new MoveComponent())
@@ -123,13 +118,10 @@ public class GameEntityFactory implements EntityFactory {
     physics.setBodyType(BodyType.DYNAMIC);
   
     HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,0.0,100.0);
-
+    String textureName = data.get("textureName");
     return entityBuilder().from(data)
                           .type(EntityType.ENEMY)
-                          .viewWithBBox("robot/robot64.png")
-                          //.viewWithBBox(new Rectangle(64,64, Color.RED))
-                          //.viewWithBBox(texture("skeleton/SkeletonIdle.png")
-                              //.toAnimatedTexture(11, Duration.seconds(1)).loop())
+                          .viewWithBBox("robot/enemy_" + textureName + ".png")
                           .with(physics)
                           .with(hpComponent)
                           .with(new EnemyComponent())
