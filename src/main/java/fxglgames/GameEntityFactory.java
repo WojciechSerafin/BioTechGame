@@ -59,6 +59,7 @@ public class GameEntityFactory implements EntityFactory {
     String textureName = data.get("textureName");
     return entityBuilder().from(data)
       .type(EntityType.CHEST)
+      .zIndex(3)
       .viewWithBBox("furniture/chest_" + textureName + ".png")
       //.bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
       .with(new PhysicsComponent())
@@ -71,6 +72,7 @@ public class GameEntityFactory implements EntityFactory {
     String textureName = data.get("textureName");
     return entityBuilder().from(data)
       .type(EntityType.FURNITURE)
+      .zIndex(3)
       .viewWithBBox("furniture/furniture_" + textureName + ".png")
       //.bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
       .with(new PhysicsComponent())
