@@ -60,7 +60,7 @@ public class BioTechApp extends GameApplication {
     getGameWorld().addEntityFactory(new GameEntityFactory());
     setLevelFromMap("tmx/test.tmx");
     spawn("background", 0, 0);
-    spawn("upperBackground", 0, 0);
+    //spawn("upperBackground", 0, 0);
     player = getGameWorld().getEntitiesByType(EntityType.PLAYER).get(0);
     moveComponent = player.getComponent(MoveComponent.class);
     playerComponent = player.getComponent(PlayerComponent.class);

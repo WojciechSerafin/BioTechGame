@@ -1,5 +1,6 @@
 package fxglgames.components;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.component.Required;
@@ -26,15 +27,16 @@ import java.util.stream.Stream;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
-@Required(PlayerComponent.class)
 public class ShadowAndLightComponent extends Component {
   
   private static final String SHADOW_COLOR = "#0d0d0dee";
   private static final BlendMode SHADOW_BLEND = BlendMode.MULTIPLY;
+  private static final double SHADOW_OPACITY = 1.0D;
   private static final String CLOSE_LIGHT_COLOR = "#FFFFFF55";
   private static final String FAR_LIGHT_COLOR = "#33333300";
   private static final BlendMode LIGHT_BLEND = BlendMode.OVERLAY;
-  private static final Long LIGHT_RANGE = 300L;
+  private static final double LIGHT_OPACITY = 1.0D;
+  private static final Long LIGHT_RANGE = 600L;
   
   
   
@@ -57,8 +59,9 @@ public class ShadowAndLightComponent extends Component {
                                              playerComponent.getPlayerViewRadius(),
                                              playerComponent.getPlayerViewRadius() ) {{
       setFill( Color.valueOf( SHADOW_COLOR ) );
+      setOpacity(SHADOW_OPACITY);
       setBlendMode( SHADOW_BLEND );
-    }} ) ;
+    }} );
     entity.getViewComponent().addChild(shadow);
     entity.getViewComponent().addChild(light);
   }
@@ -152,7 +155,7 @@ public class ShadowAndLightComponent extends Component {
       LIGHT_RANGE, false, CycleMethod.NO_CYCLE, new Stop( 0, Color.valueOf( CLOSE_LIGHT_COLOR ) ),
       new Stop( 1, Color.valueOf( FAR_LIGHT_COLOR ) ) ) );
     lightPoly.setBlendMode( LIGHT_BLEND );
-    lightPoly.setOpacity(1);
+    lightPoly.setOpacity(LIGHT_OPACITY);
     return lightPoly ;
   }
   
@@ -162,26 +165,16 @@ public class ShadowAndLightComponent extends Component {
     double mx =0 + entity.getWidth()/2;
     double my =0 + entity.getHeight()/2;
     
-    for( int i = 0 ; i < 8 ; i++ ) {
-      Polygon beam = renderRay( new Point( mx + Math.cos( ( i / 8.0 ) * ( Math.PI * 2.0 ) ) * 7.0,
-        my + Math.sin( ( i / 8.0 ) * ( Math.PI * 2.0 ) ) * 7.0  ), points, segments ) ;
-      rays.add( beam ) ;
-    }
-    
-    //chest.setClip( rays.stream().reduce( new Rectangle( 0, 0, 0, 0 ), (r,n) -> Shape.union( r, n ) ) );
-    
-    rays.clear();
-    
     Set<Point> combinedPoints = new HashSet<>( points ) ;
-    //combinedPoints.addAll( spritePoints ) ;
     Set<Segment> combinedSegments = new HashSet<>( segments ) ;
-    //combinedSegments.addAll( spriteSegments ) ;
     for( int i = 0 ; i < 8 ; i++ ) {
       Polygon beam = renderRay( new Point( mx + Math.cos( ( i / 8.0 ) * ( Math.PI * 2.0 ) ) * 7.0,
         my + Math.sin( ( i / 8.0 ) * ( Math.PI * 2.0 ) ) * 7.0  ), combinedPoints, combinedSegments ) ;
       rays.add( beam ) ;
     }
     
+    //rays.add( renderRay( new Point( mx + Math.cos( ( 0 / 8.0 ) * ( Math.PI * 2.0 ) ) * 7.0,
+      //my + Math.sin( ( 0 / 8.0 ) * ( Math.PI * 2.0 ) ) * 7.0  ), combinedPoints, combinedSegments ) ) ;
     light.getChildren().addAll( rays );
   }
 }
