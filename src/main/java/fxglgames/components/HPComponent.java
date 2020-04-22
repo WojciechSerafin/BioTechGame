@@ -16,11 +16,20 @@ public class HPComponent extends GenericBarViewComponent {
     public HPComponent(double x, double y, @NotNull Color color, double initialValue,
                        double maxValue) {
         super(-18, -20, color, initialValue, maxValue);
+    
+        DoubleProperty dp = new SimpleDoubleProperty();
+        dp.set(0);
+        
         this.curHealth.setValue(maxValue);
-        //this.getBar().
         valueProperty().bind(curHealth);
         getBar().setScaleX(0.75d);
         getBar().setScaleY(0.75d);
+        getBar().getBackgroundBar().arcWidthProperty().bind(dp);
+        getBar().getBackgroundBar().arcHeightProperty().bind(dp);
+        getBar().getInnerBar().arcHeightProperty().bind(dp);
+        getBar().getInnerBar().arcWidthProperty().bind(dp);
+        getBar().getBackgroundBar().setEffect(null);
+        getBar().getInnerBar().setEffect(null);
     }
     
 

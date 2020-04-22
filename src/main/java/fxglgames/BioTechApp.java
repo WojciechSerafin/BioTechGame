@@ -1,17 +1,20 @@
 package fxglgames;
 
-import com.almasb.fxgl.app.FXGLMenu;
+import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
-import com.almasb.fxgl.app.SceneFactory;
+import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import com.almasb.fxgl.ui.UI;
 import fxglgames.UI.GameMenu;
 import fxglgames.UI.MainMenu;
 import fxglgames.components.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Circle;
@@ -26,7 +29,7 @@ public class BioTechApp extends GameApplication {
   private MoveComponent moveComponent;
   private PlayerComponent playerComponent;
   private AttacksComponent attacksComponent;
-
+  private BioTechController uiController;
   @Override
   protected void initSettings(GameSettings gameSettings) {
     gameSettings.setHeight(540);
@@ -35,9 +38,9 @@ public class BioTechApp extends GameApplication {
     gameSettings.setFullScreenFromStart(true);
     gameSettings.setTitle("The Bio Tech Game");
     gameSettings.setManualResizeEnabled(false);
-    gameSettings.setFullScreenAllowed(true);
     gameSettings.setVersion("0.1");
-    gameSettings.setMenuEnabled(true);
+    gameSettings.setGameMenuEnabled(true);
+    gameSettings.setMainMenuEnabled(true);
     gameSettings.setSceneFactory(new SceneFactory() {
       @Override
       public FXGLMenu newMainMenu() {
@@ -69,11 +72,19 @@ public class BioTechApp extends GameApplication {
     getGameScene().getViewport().bindToEntity(player, getAppWidth() / 2, getAppHeight() / 2);
     getGameScene().getViewport().setLazy(true);
     getGameScene().getViewport().setBounds(0, 0, 5760, 5760);
+    //getGameScene().getViewport().getCamera().addComponent(new ShadowAndLightComponent());
   }
 
   @Override
   protected void initUI() {
+    uiController = new BioTechController(getGameScene());
+    UI ui = getAssetLoader().loadUI("main.fxml", uiController);
   
+    StringProperty sp = new SimpleStringProperty();
+    sp.setValue("Nazwa lokacji");
+    uiController.getNazwaLokacji().textProperty().bind(sp);
+    
+    getGameScene().addUI(ui);
   }
 
   @Override
