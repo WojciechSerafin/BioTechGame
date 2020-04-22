@@ -3,6 +3,7 @@ package fxglgames;
 import com.almasb.fxgl.dsl.EntityBuilder;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
+import com.almasb.fxgl.dsl.components.OffscreenPauseComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
@@ -97,18 +98,19 @@ public class GameEntityFactory implements EntityFactory {
 
     HPComponent hpComponent = new HPComponent(-18, -20, Color.YELLOW,0.0,100.0);
   
-    String textureName = data.get("textureName");
+    //String textureName = data.get("textureName");
     return entityBuilder().from(data)
                           .zIndex(2)
                           .type(EntityType.PLAYER)
-                          .viewWithBBox("robot/player_" + textureName + ".png")
+                          //.viewWithBBox("robot/player_" + textureName + ".png")
+                          .viewWithBBox("robot/robot64.png")
                           .with(physics)
                           .with(hpComponent)
                           .with(new MoveComponent())
                           .with(new PlayerComponent())
                           .with(new AttacksComponent(-35,35,Color.WHITE))
                           .with(new CollidableComponent(true))
-                          .with(new ShadowAndLightComponent())
+                          //.with(new ShadowAndLightComponent())
                           .build();
   }
 
@@ -118,10 +120,11 @@ public class GameEntityFactory implements EntityFactory {
     physics.setBodyType(BodyType.DYNAMIC);
   
     HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,0.0,100.0);
-    String textureName = data.get("textureName");
+    //String textureName = data.get("textureName");
     return entityBuilder().from(data)
                           .type(EntityType.ENEMY)
-                          .viewWithBBox("robot/enemy_" + textureName + ".png")
+                          //.viewWithBBox("robot/enemy_" + textureName + ".png")
+                          .viewWithBBox("robot/robot64.png")
                           .with(physics)
                           .with(hpComponent)
                           .with(new EnemyComponent())

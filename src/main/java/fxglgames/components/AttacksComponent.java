@@ -17,6 +17,14 @@ import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 public class AttacksComponent extends GenericBarViewComponent {
 
+    private DoubleProperty mana = new SimpleDoubleProperty();
+    private DoubleProperty maximumMana = new SimpleDoubleProperty();
+    private int initMaxMana = 100;
+    private int resetCost = 20;
+    private Date nextManaRestoration;
+    private int manaRestorationRate = 1;
+    private int manaRestorationDelay = 2000;
+    
     private float attackSpeed = 2.5f;
     private double bulletSpeed = 500;
     private Date nextAttack;
@@ -32,6 +40,9 @@ public class AttacksComponent extends GenericBarViewComponent {
         valueProperty().bind(nextAtackCD);
         this.getBar().setLabelVisible(false);
         this.getBar().setVisible(false);
+        mana.setValue(initMaxMana);
+        maximumMana.setValue(initMaxMana);
+        nextManaRestoration = new Date();
     }
     
     @Override
@@ -44,8 +55,12 @@ public class AttacksComponent extends GenericBarViewComponent {
         } else {
             attackCD = (nextAttack.getTime() - now.getTime()) / ((double)attackSpeed * 1000);
         }
-        
         nextAtackCD.setValue(attackCD);
+        
+        if (now.getTime() > nextManaRestoration.getTime()) {
+            nextManaRestoration = Date.from(Instant.now().plusMillis(manaRestorationDelay));
+            mana.setValue(mana.doubleValue() + manaRestorationRate);
+        }
     }
     
     public void attack() {
@@ -63,9 +78,26 @@ public class AttacksComponent extends GenericBarViewComponent {
 
     public void resetAttack() {
         Date now = new Date();
-        if (nextReset == null || now.getTime() > nextReset.getTime()) {
+        if ((nextReset == null || now.getTime() > nextReset.getTime()) && mana.get() > resetCost) {
             nextReset = Date.from(Instant.now().plusMillis(Math.round(resetDelay * 1000)));
             nextAttack = now;
+            mana.setValue(mana.get() - resetCost);
         }
+    }
+    
+    public double getMana() {
+        return mana.get();
+    }
+    
+    public DoubleProperty manaProperty() {
+        return mana;
+    }
+    
+    public double getMaximumMana() {
+        return maximumMana.get();
+    }
+    
+    public DoubleProperty maximumManaProperty() {
+        return maximumMana;
     }
 }

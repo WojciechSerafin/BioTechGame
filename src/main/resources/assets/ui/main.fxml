@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.almasb.fxgl.ui.ProgressBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fx:id="nazwaLokacji" strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwa Lokalizacji" x="13.0" y="13.0">
+         <font>
+            <Font name="Pixel Operator" size="14.0" />
+         </font>
+      </Text>
+      <HBox alignment="CENTER" layoutX="400.0" layoutY="480.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="260.0" spacing="10.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <children>
+            <ImageView fx:id="skill1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/@icons/1.jpg" />
+               </image></ImageView>
+            <ImageView fx:id="skill2" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/@icons/2.jpg" />
+               </image></ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0" rotate="-90.0">
+               <children>
+                  <ProgressBar fx:id="health" />
+                  <ProgressBar fx:id="mana" />
+               </children>
+            </VBox>
+            <ImageView fx:id="skill3" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/@icons/3.jpg" />
+
+
+               </image></ImageView>
+            <ImageView fx:id="skill4" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/@icons/4.jpg" />
+               </image></ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </opaqueInsets>
+      </HBox>
+      <ImageView fx:id="playerInfo" fitHeight="30.0" fitWidth="30.0" layoutX="917.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/@icons/5.jpg" />
+         </image></ImageView>
+   </children>
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+   <opaqueInsets>
+      <Insets bottom="13.0" left="13.0" right="13.0" top="13.0" />
+   </opaqueInsets>
+</Pane>

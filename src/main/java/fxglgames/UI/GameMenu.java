@@ -1,7 +1,7 @@
 package fxglgames.UI;
 
-import com.almasb.fxgl.app.FXGLMenu;
-import com.almasb.fxgl.app.MenuType;
+import com.almasb.fxgl.app.scene.FXGLMenu;
+import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.dsl.FXGL;
 import fxglgames.UI.buttons.GameButton;
 import javafx.beans.binding.Bindings;
