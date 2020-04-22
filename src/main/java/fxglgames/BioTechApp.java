@@ -20,7 +20,7 @@ import javafx.scene.shape.Circle;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class BioTechApp extends GameApplication {
-  public static final boolean DEBUG = true;
+  public static final boolean DEBUG = false;
   
   private Entity player;
   private MoveComponent moveComponent;

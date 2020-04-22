@@ -30,11 +30,11 @@ public class ShadowAndLightComponent extends Component {
   
   private static final String SHADOW_COLOR = "#0d0d0dee";
   private static final BlendMode SHADOW_BLEND = BlendMode.MULTIPLY;
-  private static final double SHADOW_OPACITY = 1.0D;
+  private static final double SHADOW_OPACITY = 0.9D;
   private static final String CLOSE_LIGHT_COLOR = "#FFFFFF55";
   private static final String FAR_LIGHT_COLOR = "#33333300";
   private static final BlendMode LIGHT_BLEND = BlendMode.OVERLAY;
-  private static final double LIGHT_OPACITY = 1.0D;
+  private static final double LIGHT_OPACITY = 0.8D;
   private static final Long LIGHT_RANGE = 600L;
   
   
