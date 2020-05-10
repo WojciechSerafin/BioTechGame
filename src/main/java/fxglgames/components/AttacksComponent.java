@@ -57,7 +57,7 @@ public class AttacksComponent extends GenericBarViewComponent {
         }
         nextAtackCD.setValue(attackCD);
         
-        if (now.getTime() > nextManaRestoration.getTime()) {
+        if (mana.get() < maximumMana.get() && now.getTime() > nextManaRestoration.getTime()) {
             nextManaRestoration = Date.from(Instant.now().plusMillis(manaRestorationDelay));
             mana.setValue(mana.doubleValue() + manaRestorationRate);
         }

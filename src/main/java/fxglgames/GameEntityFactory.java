@@ -9,17 +9,22 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
+import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.entity.components.IrremovableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
+import com.almasb.fxgl.physics.PhysicsUnitConverter;
+import com.almasb.fxgl.physics.box2d.collision.shapes.Shape;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import fxglgames.components.*;
+import javafx.geometry.BoundingBox;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
+import org.jetbrains.annotations.NotNull;
 
 
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -103,7 +108,8 @@ public class GameEntityFactory implements EntityFactory {
                           .zIndex(2)
                           .type(EntityType.PLAYER)
                           //.viewWithBBox("robot/player_" + textureName + ".png")
-                          .viewWithBBox("robot/player_01.png")
+                          //.viewWithBBox("robot/enemy_02.png")
+                          .bbox(new HitBox(BoundingShape.box(58,64)))
                           .with(physics)
                           .with(hpComponent)
                           .with(new MoveComponent())
@@ -114,8 +120,8 @@ public class GameEntityFactory implements EntityFactory {
                           .build();
   }
 
-  @Spawns("enemy")
-  public Entity newEnemy(SpawnData data) {
+  @Spawns("BoxerBot")
+  public Entity newBoxerBot(SpawnData data) {
     PhysicsComponent physics = new PhysicsComponent();
     physics.setBodyType(BodyType.DYNAMIC);
   
@@ -124,12 +130,32 @@ public class GameEntityFactory implements EntityFactory {
     return entityBuilder().from(data)
                           .type(EntityType.ENEMY)
                           //.viewWithBBox("robot/enemy_" + textureName + ".png")
-                          .viewWithBBox("robot/enemy_02.png")
+                          //.viewWithBBox("robot/enemy_02.png")
+                          .bbox(new HitBox(BoundingShape.box(58,64)))
                           .with(physics)
                           .with(hpComponent)
-                          .with(new EnemyComponent())
+                          .with((EnemyComponent)new BoxerBotComponent())
                           .with(new CollidableComponent(true))
                           .build();
+  }
+
+  @Spawns("AlertBot")
+  public Entity newAlertBot(SpawnData data) {
+    PhysicsComponent physics = new PhysicsComponent();
+    physics.setBodyType(BodyType.DYNAMIC);
+
+    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,0.0,100.0);
+    //String textureName = data.get("textureName");
+    return entityBuilder().from(data)
+      .type(EntityType.ENEMY)
+      //.viewWithBBox("robot/enemy_" + textureName + ".png")
+      //.viewWithBBox("robot/enemy_02.png")
+      .bbox(new HitBox(BoundingShape.box(58,64)))
+      .with(physics)
+      .with(hpComponent)
+      .with((EnemyComponent)new AlertBotComponent())
+      .with(new CollidableComponent(true))
+      .build();
   }
 
   @Spawns("bullet")

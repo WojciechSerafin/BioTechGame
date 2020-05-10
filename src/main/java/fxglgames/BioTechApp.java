@@ -23,7 +23,7 @@ import javafx.scene.shape.Circle;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class BioTechApp extends GameApplication {
-  public static final boolean DEBUG = false;
+  public static final boolean DEBUG = true;
   
   private Entity player;
   private MoveComponent moveComponent;
@@ -61,7 +61,7 @@ public class BioTechApp extends GameApplication {
   @Override
   protected void initGame() {
     getGameWorld().addEntityFactory(new GameEntityFactory());
-    setLevelFromMap("tmx/TILED.tmx");
+    setLevelFromMap("tmx/test.tmx");
     spawn("background", 0, 0);
     //spawn("upperBackground", 0, 0);
     player = getGameWorld().getEntitiesByType(EntityType.PLAYER).get(0);
@@ -72,7 +72,6 @@ public class BioTechApp extends GameApplication {
     getGameScene().getViewport().bindToEntity(player, getAppWidth() / 2, getAppHeight() / 2);
     getGameScene().getViewport().setLazy(true);
     getGameScene().getViewport().setBounds(0, 0, 5760, 5760);
-    //getGameScene().getViewport().getCamera().addComponent(new ShadowAndLightComponent());
   }
 
   @Override
@@ -111,14 +110,6 @@ public class BioTechApp extends GameApplication {
         Integer damage = a.getComponent(BulletComponent.class).getDamage();
         b.getComponent(HPComponent.class).hit(damage);
         a.removeFromWorld();
-      }
-    });
-  
-    physics.addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.ENEMY) {
-      @Override
-      protected void onCollisionBegin(Entity a, Entity b) {
-        a.getComponent(HPComponent.class).hit(50);
-        b.getComponent(HPComponent.class).hit(50);
       }
     });
   }

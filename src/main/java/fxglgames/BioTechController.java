@@ -8,10 +8,17 @@ import fxglgames.components.AttacksComponent;
 import fxglgames.components.HPComponent;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class BioTechController implements UIController {
   
@@ -55,7 +62,19 @@ public class BioTechController implements UIController {
     nazwaLokacji.setStroke(Color.GOLD);
     nazwaLokacji.setFill(Color.GOLD);
     nazwaLokacji.setVisible(true);
-  
+    
+    
+    Image image = new Image("assets/ui/icons/1.jpg");
+    skill1.setImage(image);
+    image = new Image("assets/ui/icons/2.jpg");
+    skill2.setImage(image);
+    image = new Image("assets/ui/icons/3.jpg");
+    skill3.setImage(image);
+    image = new Image("assets/ui/icons/4.jpg");
+    skill4.setImage(image);
+    image = new Image("assets/ui/icons/5.jpg");
+    playerInfo.setImage(image);
+    
     health.setScaleX(1);
     health.setScaleY(1);
     health.setEffect(null);
@@ -64,6 +83,7 @@ public class BioTechController implements UIController {
     health.getBackgroundBar().arcHeightProperty().unbind();
     health.getBackgroundBar().setArcWidth(0);
     health.getBackgroundBar().setArcHeight(0);
+    //health.getBackgroundBar().setRotate(-90);
     
     health.getInnerBar().setEffect(null);
     health.getInnerBar().arcWidthProperty().unbind();
@@ -74,8 +94,10 @@ public class BioTechController implements UIController {
     health.setWidth(40);
     health.setHeight(40);
     
+    health.setLabelVisible(false);
+    
     health.currentValueProperty().bind(hpComponent.curHealthProperty());
-  
+    
     mana.setScaleX(1);
     mana.setScaleY(1);
     mana.setEffect(null);
@@ -96,6 +118,7 @@ public class BioTechController implements UIController {
     mana.maxValueProperty().bind(attacksComponent.maximumManaProperty());
     mana.currentValueProperty().bind(attacksComponent.manaProperty());
     
+    mana.setLabelFill(Color.TRANSPARENT);
     mana.setLabelVisible(false);
   }
   

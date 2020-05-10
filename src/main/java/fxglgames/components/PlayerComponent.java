@@ -18,6 +18,7 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.image;
 
 @Required(MoveComponent.class)
 public class PlayerComponent extends Component {
+  private Boolean alive = true;
   private MoveComponent moveComponent;
   private AnimatedTexture texture;
   private HashMap<String, AnimationChannel> animations = new HashMap<String, AnimationChannel>();
@@ -25,11 +26,15 @@ public class PlayerComponent extends Component {
 
   
   public PlayerComponent() {
-    Image imageIdle = image("knight/KnightIdle.png");
-    Image imageWalk = image("knight/KnightRun.png");
+    Image imageIdle = image("robot/boxer_bot_idle.png");
+    Image imageWalkDown = image("robot/boxer_bot_run.png");
+    Image imageWalkUp = image("robot/boxer_bot_run_tyl.png");
+    Image imageDeath = image("robot/boxer_bot_death.png");
 
-    animations.put("animIdle", new AnimationChannel(imageIdle, Duration.seconds(0.66), 15));
-    animations.put("animWalk", new AnimationChannel(imageWalk, Duration.seconds(0.66), 8));
+    animations.put("animIdle", new AnimationChannel(imageIdle, Duration.seconds(0.66), 5));
+    animations.put("animWalkDown", new AnimationChannel(imageWalkDown, Duration.seconds(0.66), 16));
+    animations.put("animWalkUp", new AnimationChannel(imageWalkUp, Duration.seconds(0.66), 16));
+    animations.put("animDeath", new AnimationChannel(imageDeath, Duration.seconds(1), 8));
 
     texture = new AnimatedTexture(animations.get("animIdle"));
     texture.loop();
@@ -38,8 +43,7 @@ public class PlayerComponent extends Component {
   
   @Override
   public void onUpdate(double tpf) {
-    //updateFacing();
-    //updateAnimation();
+    updateAnimation();
     super.onUpdate(tpf);
   }
   
@@ -49,19 +53,25 @@ public class PlayerComponent extends Component {
     if (BioTechApp.DEBUG) {
       entity.getViewComponent().addChild(getViewRangeField());
     }
-    //entity.getViewComponent().addChild(texture);
+    entity.getViewComponent().addChild(texture);
   }
   
-  private void updateFacing() {
-    int facing = moveComponent.getFacing();
-    if (facing != 0)
-      getEntity().setScaleX(facing);
-  }
+
   
   private void updateAnimation() {
+    if (!alive) {
+      return;
+    }
     if (moveComponent.isMoving()) {
-      if (texture.getAnimationChannel() != animations.get("animWalk")) {
-        texture.loopAnimationChannel(animations.get("animWalk"));
+      int facing = moveComponent.getFacing();
+      if (facing == -1) {
+        if (texture.getAnimationChannel() != animations.get("animWalkUp")) {
+          texture.loopAnimationChannel(animations.get("animWalkUp"));
+        }
+      } else {
+        if (texture.getAnimationChannel() != animations.get("animWalkDown")) {
+          texture.loopAnimationChannel(animations.get("animWalkDown"));
+        }
       }
     } else {
       if (texture.getAnimationChannel() != animations.get("animIdle")) {
@@ -82,5 +92,9 @@ public class PlayerComponent extends Component {
   
   public int getPlayerViewRadius() {
     return playerViewRadius;
+  }
+  public void playDeathAnimation() {
+    this.alive = false;
+    texture.playAnimationChannel(animations.get("animDeath"));
   }
 }
