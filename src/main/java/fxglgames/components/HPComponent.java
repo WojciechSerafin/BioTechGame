@@ -1,17 +1,21 @@
 package fxglgames.components;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.view.GenericBarViewComponent;
 import com.almasb.fxgl.entity.component.Component;
+import fxglgames.EnemyType;
 import fxglgames.EntityType;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import org.jetbrains.annotations.NotNull;
 
 
 public class HPComponent extends GenericBarViewComponent {
     private DoubleProperty curHealth = new SimpleDoubleProperty();
+    private EnemyType enemyType;
     
     public HPComponent(double x, double y, @NotNull Color color, double initialValue,
                        double maxValue) {
@@ -42,9 +46,10 @@ public class HPComponent extends GenericBarViewComponent {
         this.curHealth.set(curHealth.get() - damage);
         if (this.curHealth.get() <= 0) {
             if (entity.getType() == EntityType.PLAYER) {
-            
+                entity.getComponent(PlayerComponent.class).playDeathAnimation();
             } else if (entity.getType() == EntityType.ENEMY) {
-                entity.removeFromWorld();
+                ((EnemyComponent)entity.getComponent(enemyType.getComponentClazz())).playDeathAnimation();
+                FXGL.runOnce(() -> {entity.removeFromWorld();}, Duration.seconds(1));
             }
             return false;
         } else {
@@ -58,5 +63,9 @@ public class HPComponent extends GenericBarViewComponent {
 
     public DoubleProperty curHealthProperty() {
         return curHealth;
+    }
+    
+    public void setEnemyType(EnemyType enemyType) {
+        this.enemyType = enemyType;
     }
 }

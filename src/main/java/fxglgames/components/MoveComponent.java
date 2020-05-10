@@ -46,14 +46,10 @@ public class MoveComponent extends Component {
   public boolean isMoving() {
     return physics.isMoving();
   }
-  
-  /**
-   * @return -1 left, 1 right, 0 if not moving
-   */
   public int getFacing() {
-    if (physics.getVelocityX() > 0)
+    if (physics.getVelocityY() > 0)
       return 1;
-    else if (physics.getVelocityX() < 0)
+    else if (physics.getVelocityY() < 0)
       return -1;
     else
       return 0;
