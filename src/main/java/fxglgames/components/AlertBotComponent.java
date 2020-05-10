@@ -12,17 +12,17 @@ public class AlertBotComponent extends EnemyComponent {
   
   @Override
   protected void loadAnimations() throws Exception {
-    Image imageIdle = image("robot/alert_bot_idle.png");
-    Image imageWalkDown = image("robot/alert_bot_run.png");
-    Image imageWalkUp = image("robot/alert_bot_run_tyl.png");
-    Image imageDeath = image("robot/alert_bot_death.png");
-    Image imageAttack = image("robot/alert_bot_attack.png");
+    Image imageIdle = image("robot/alert_bot_idle_sekwencja.png");
+    Image imageWalkDown = image("robot/alert_bot_run_sekwencja.png");
+    Image imageWalkUp = image("robot/alert_bot_run_tyl_sekwencja.png");
+    Image imageDeath = image("robot/alert_bot_death_sekwencja.png");
+    Image imageAttack = image("robot/alert_bot_attack_sekwencja.png");
   
-    animations.put("animIdle", new AnimationChannel(imageIdle, Duration.seconds(0.66), 5));
-    animations.put("animWalkDown", new AnimationChannel(imageWalkDown, Duration.seconds(0.66), 16));
-    animations.put("animWalkUp", new AnimationChannel(imageWalkUp, Duration.seconds(0.66), 16));
-    animations.put("animDeath", new AnimationChannel(imageDeath, Duration.seconds(1), 8));
-    animations.put("animAttack", new AnimationChannel(imageAttack, Duration.seconds(1), 20));
+    animations.put("animIdle", new AnimationChannel(imageIdle, Duration.seconds(0.66), 6));
+    animations.put("animWalkDown", new AnimationChannel(imageWalkDown, Duration.seconds(0.66), 6));
+    animations.put("animWalkUp", new AnimationChannel(imageWalkUp, Duration.seconds(0.66), 6));
+    animations.put("animDeath", new AnimationChannel(imageDeath, Duration.seconds(1), 7));
+    animations.put("animAttack", new AnimationChannel(imageAttack, Duration.seconds(1), 11));
   }
   
   @Override

@@ -12,11 +12,11 @@ public class BoxerBotComponent extends EnemyComponent {
   
   @Override
   protected void loadAnimations() throws Exception {
-    Image imageIdle = image("robot/boxer_bot_idle.png");
-    Image imageWalkDown = image("robot/boxer_bot_run.png");
-    Image imageWalkUp = image("robot/boxer_bot_run_tyl.png");
-    Image imageDeath = image("robot/boxer_bot_death.png");
-    Image imageAttack = image("robot/boxer_bot_attack.png");
+    Image imageIdle = image("robot/boxer_bot_idle_sekwencja.png");
+    Image imageWalkDown = image("robot/boxer_bot_run_sekwencja.png");
+    Image imageWalkUp = image("robot/boxer_bot_run_tyl_sekwencja.png");
+    Image imageDeath = image("robot/boxer_bot_death_sekwencja.png");
+    Image imageAttack = image("robot/boxer_bot_attack_sekwencja.png");
   
     animations.put("animIdle", new AnimationChannel(imageIdle, Duration.seconds(0.66), 5));
     animations.put("animWalkDown", new AnimationChannel(imageWalkDown, Duration.seconds(0.66), 16));
