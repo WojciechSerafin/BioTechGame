@@ -103,14 +103,14 @@ public class GameEntityFactory implements EntityFactory {
                           .zIndex(2)
                           .type(EntityType.PLAYER)
                           //.viewWithBBox("robot/player_" + textureName + ".png")
-                          .viewWithBBox("robot/robot64.png")
+                          .viewWithBBox("robot/player_01.png")
                           .with(physics)
                           .with(hpComponent)
                           .with(new MoveComponent())
                           .with(new PlayerComponent())
                           .with(new AttacksComponent(-35,35,Color.WHITE))
                           .with(new CollidableComponent(true))
-                          //.with(new ShadowAndLightComponent())
+                          .with(new ShadowAndLightComponent())
                           .build();
   }
 
@@ -124,7 +124,7 @@ public class GameEntityFactory implements EntityFactory {
     return entityBuilder().from(data)
                           .type(EntityType.ENEMY)
                           //.viewWithBBox("robot/enemy_" + textureName + ".png")
-                          .viewWithBBox("robot/robot64.png")
+                          .viewWithBBox("robot/enemy_02.png")
                           .with(physics)
                           .with(hpComponent)
                           .with(new EnemyComponent())
