@@ -48,7 +48,7 @@ public class HPComponent extends GenericBarViewComponent {
             if (entity.getType() == EntityType.PLAYER) {
                 entity.getComponent(PlayerComponent.class).playDeathAnimation();
             } else if (entity.getType() == EntityType.ENEMY) {
-                ((EnemyComponent)entity.getComponent(enemyType.getComponentClazz())).playDeathAnimation();
+                getEnemyComponent().playDeathAnimation();
                 FXGL.runOnce(() -> {entity.removeFromWorld();}, Duration.seconds(1));
             }
             return false;
@@ -56,7 +56,11 @@ public class HPComponent extends GenericBarViewComponent {
             return true;
         }
     }
-
+    
+    public EnemyComponent getEnemyComponent() {
+        return (EnemyComponent)entity.getComponent(enemyType.getComponentClazz());
+    }
+    
     public double getCurHealth() {
         return curHealth.get();
     }
@@ -67,5 +71,9 @@ public class HPComponent extends GenericBarViewComponent {
     
     public void setEnemyType(EnemyType enemyType) {
         this.enemyType = enemyType;
+    }
+    
+    public EnemyType getEnemyType() {
+        return enemyType;
     }
 }

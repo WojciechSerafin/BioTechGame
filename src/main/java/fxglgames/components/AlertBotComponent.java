@@ -6,9 +6,14 @@ import fxglgames.EnemyType;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
 
+import java.util.stream.Collectors;
+
+import static com.almasb.fxgl.dsl.FXGL.*;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.image;
 
 public class AlertBotComponent extends EnemyComponent {
+  private int alertRange = 1200;
+  private Boolean isSpawning = false;
   
   @Override
   protected void loadAnimations() throws Exception {
@@ -29,7 +34,7 @@ public class AlertBotComponent extends EnemyComponent {
   protected void initializeEnemy() throws Exception {
     this.playerFollowingSpeed = 200;
     this.checkForPlayerRadius = 300;
-    this.attackRange = 70D;
+    this.attackRange = 300D;
     this.isAttacking = false;
   }
   
@@ -41,12 +46,41 @@ public class AlertBotComponent extends EnemyComponent {
   
   @Override
   protected void attack() throws Exception {
+    if (!isSpawning) {
+      isSpawning = true;
+      FXGL.runOnce(() -> {
+        spawnFriends(1);
+        isSpawning = false;
+      }, Duration.seconds(10));
+    }
     FXGL.runOnce(() -> {
-      getPlayer().getComponent(HPComponent.class).hit(10);
+      getEnemies().stream()
+                  .filter(e -> e.distance(entity) <= alertRange)
+                  .collect(Collectors.toList()).forEach(e -> {
+                    e.getComponent(HPComponent.class).getEnemyComponent().alert();
+                  });
     }, Duration.millis(660));
     FXGL.runOnce(() -> {
       isAttacking = false;
-    }, Duration.millis(1050));
+    }, Duration.millis(1000));
+  }
+  private void spawnFriends(int numberOfFriendsToSpawn) {
+    if (entity == null)
+      return;
+    double x = entity.getX();
+    double y = entity.getY();
+    for (int i = 0; i < numberOfFriendsToSpawn; i++) {
+      switch(FXGL.random(1,2)) {
+        case 1:
+          spawn("BoxerBot", x+random(-100, 100), y+random(-100, 100));
+          break;
+        case 2:
+          spawn("AlertBot", x+random(-100, 100), y+random(-100, 100));
+          break;
+        default:
+          break;
+      }
+    }
   }
 }
 

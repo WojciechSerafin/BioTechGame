@@ -144,7 +144,7 @@ public class GameEntityFactory implements EntityFactory {
     PhysicsComponent physics = new PhysicsComponent();
     physics.setBodyType(BodyType.DYNAMIC);
 
-    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,0.0,100.0);
+    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,0.0,45.0);
     //String textureName = data.get("textureName");
     return entityBuilder().from(data)
       .type(EntityType.ENEMY)
