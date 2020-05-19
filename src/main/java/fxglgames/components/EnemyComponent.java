@@ -21,13 +21,20 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.spi.LoggerFactory;
 
 import java.security.spec.ECField;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.image;
 
 public class EnemyComponent extends Component {
   private Boolean alive = true;
+  protected Boolean alerted = false;
+  protected Date lastAlert = new Date();
+  protected int alertPeriodInSeconds = 10;
+  protected boolean playerLOS = false;
   private Entity player;
   private PhysicsComponent physics;
   private int velX = 0, velY = 0;
@@ -58,30 +65,10 @@ public class EnemyComponent extends Component {
     if (!alive) {
       velX = 0;
       velY = 0;
+    } else if (alerted) {
+      movingToDetectedPlayer(true);
     } else if (distanceToPlayer <= checkForPlayerRadius) {
-      if (getPlayer().isWithin(getAttackAreaR2D())) {
-        velX = 0;
-        velY = 0;
-        if (texture.getAnimationChannel() != animations.get("animAttack"))
-          isAttacking = true;
-      } else {
-        double dx = getPlayer().getCenter().getX() - entity.getCenter().getX();
-        double dy = getPlayer().getCenter().getY() - entity.getCenter().getY();
-  
-        l = new Line(0 + entity.getWidth() / 2, 0 + entity.getHeight() / 2,
-          getPlayer().getX() - entity.getX() + getPlayer().getWidth() / 2,
-          getPlayer().getY() - entity.getY() + getPlayer().getHeight() / 2);
-  
-        int followDirection = 1;
-        for (Entity e : getGameWorld().getEntitiesByType(EntityType.WALL, EntityType.FAKE_WALL)) {
-          if (l.intersects(e.getX() - entity.getX(), e.getY() - entity.getY(), e.getWidth(), e.getHeight())) {
-            followDirection = 0;
-          }
-        }
-  
-        velX = (int) (Math.sin(dx / distanceToPlayer) * playerFollowingSpeed) * followDirection;
-        velY = (int) (Math.sin(dy / distanceToPlayer) * playerFollowingSpeed) * followDirection;
-      }
+      movingToDetectedPlayer(false);
     } else {
       if (random(0, 1000) < 10) {
         velX = random(-100, 100);
@@ -92,6 +79,41 @@ public class EnemyComponent extends Component {
     physics.setVelocityX(velX);
     updateAnimation();
   }
+  
+  private void movingToDetectedPlayer(Boolean alerted) {
+    if (getPlayer().isWithin(getAttackAreaR2D())) {
+      velX = 0;
+      velY = 0;
+      if (texture.getAnimationChannel() != animations.get("animAttack"))
+        isAttacking = !playerLOS;
+    } else {
+      double dx = getPlayer().getCenter().getX() - entity.getCenter().getX();
+      double dy = getPlayer().getCenter().getY() - entity.getCenter().getY();
+
+      l = new Line(0 + entity.getWidth() / 2, 0 + entity.getHeight() / 2,
+        getPlayer().getX() - entity.getX() + getPlayer().getWidth() / 2,
+        getPlayer().getY() - entity.getY() + getPlayer().getHeight() / 2);
+
+      int followDirection = 1;
+      for (Entity e : getGameWorld().getEntitiesByType(EntityType.WALL, EntityType.FAKE_WALL)) {
+        if (l.intersects(e.getX() - entity.getX(), e.getY() - entity.getY(), e.getWidth(), e.getHeight())) {
+          followDirection = 0;
+          playerLOS = true;
+        }
+      }
+      
+      if (followDirection != 0) {
+        playerLOS = false;
+      }
+      
+      if (alerted) {
+        followDirection = followDirection == 0 ? 1 : followDirection * 2;
+      }
+      velX = (int) ((Math.sin(dx / distanceToPlayer) * playerFollowingSpeed) * followDirection);
+      velY = (int) ((Math.sin(dy / distanceToPlayer) * playerFollowingSpeed) * followDirection);
+    }
+  }
+  
   public int getFacing() {
     if (physics.getVelocityY() > 0)
       return 1;
@@ -152,6 +174,11 @@ public class EnemyComponent extends Component {
     return player;
   }
   
+  protected List<Entity> getEnemies() {
+    List<Entity> enemies = getGameWorld().getEntitiesByType(EntityType.ENEMY);
+    return enemies;
+  }
+  
   protected Circle getFollowRangeCircle() {
     Circle c = new Circle(entity.getWidth()/2, entity.getHeight()/2, this.checkForPlayerRadius);
     c.setStroke(Color.YELLOW);
@@ -173,6 +200,11 @@ public class EnemyComponent extends Component {
       entity.getHeight()/2 - this.attackRange/2,this.attackRange,
       this.attackRange);
     return r;
+  }
+  
+  protected void alert() {
+    this.alerted = true;
+    FXGL.runOnce(() -> {this.alerted = false;}, Duration.seconds(2));
   }
   
   public void playDeathAnimation() {
