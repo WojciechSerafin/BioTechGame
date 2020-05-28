@@ -1,7 +1,7 @@
 package fxglgames.utils;
 
 public class Utils {
-  public static float clamp (float val, float min, float max) {
+  public static Double clamp (Double val, Double min, Double max) {
     if (val > max) val = max;
     else if (val < min) val = min;
     

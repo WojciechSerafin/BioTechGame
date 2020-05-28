@@ -30,13 +30,11 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.image;
 
 public class EnemyComponent extends Component {
-  private Boolean alive = true;
+  protected Boolean alive = true;
   protected Boolean alerted = false;
-  protected Date lastAlert = new Date();
-  protected int alertPeriodInSeconds = 10;
   protected boolean playerLOS = false;
   private Entity player;
-  private PhysicsComponent physics;
+  protected PhysicsComponent physics;
   private int velX = 0, velY = 0;
   protected int playerFollowingSpeed = 200;
   protected int checkForPlayerRadius = 300;
@@ -122,7 +120,7 @@ public class EnemyComponent extends Component {
     else
       return 0;
   }
-  private void updateAnimation() {
+  protected void updateAnimation() {
     if (!alive) {
       return;
     }

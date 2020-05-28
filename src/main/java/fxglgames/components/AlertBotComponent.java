@@ -70,17 +70,21 @@ public class AlertBotComponent extends EnemyComponent {
     double x = entity.getX();
     double y = entity.getY();
     for (int i = 0; i < numberOfFriendsToSpawn; i++) {
-      switch(FXGL.random(1,2)) {
+      switch(FXGL.random(1,3)) {
         case 1:
           spawn("BoxerBot", x+random(-100, 100), y+random(-100, 100));
           break;
         case 2:
           spawn("AlertBot", x+random(-100, 100), y+random(-100, 100));
           break;
+        case 3:
+          spawn("HealerBot", x+random(-100, 100), y+random(-100, 100));
+          break;
         default:
           break;
       }
     }
   }
+
 }
 

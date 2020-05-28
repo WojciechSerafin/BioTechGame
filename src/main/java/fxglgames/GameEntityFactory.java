@@ -101,7 +101,7 @@ public class GameEntityFactory implements EntityFactory {
     PhysicsComponent physics = new PhysicsComponent();
     physics.setBodyType(BodyType.DYNAMIC);
 
-    HPComponent hpComponent = new HPComponent(-18, -20, Color.YELLOW,0.0,100.0);
+    HPComponent hpComponent = new HPComponent(-18, -20, Color.YELLOW,200.0,200.0);
   
     //String textureName = data.get("textureName");
     return entityBuilder().from(data)
@@ -125,7 +125,7 @@ public class GameEntityFactory implements EntityFactory {
     PhysicsComponent physics = new PhysicsComponent();
     physics.setBodyType(BodyType.DYNAMIC);
   
-    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,0.0,100.0);
+    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,100.0,100.0);
     //String textureName = data.get("textureName");
     return entityBuilder().from(data)
                           .type(EntityType.ENEMY)
@@ -144,7 +144,7 @@ public class GameEntityFactory implements EntityFactory {
     PhysicsComponent physics = new PhysicsComponent();
     physics.setBodyType(BodyType.DYNAMIC);
 
-    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,0.0,45.0);
+    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,45.0,45.0);
     //String textureName = data.get("textureName");
     return entityBuilder().from(data)
       .type(EntityType.ENEMY)
@@ -157,7 +157,26 @@ public class GameEntityFactory implements EntityFactory {
       .with(new CollidableComponent(true))
       .build();
   }
-
+  
+  @Spawns("HealerBot")
+  public Entity newHealerBot(SpawnData data) {
+    PhysicsComponent physics = new PhysicsComponent();
+    physics.setBodyType(BodyType.DYNAMIC);
+    
+    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,10.0,10.0);
+    //String textureName = data.get("textureName");
+    return entityBuilder().from(data)
+      .type(EntityType.ENEMY)
+      //.viewWithBBox("robot/enemy_" + textureName + ".png")
+      //.viewWithBBox("robot/enemy_02.png")
+      .bbox(new HitBox(BoundingShape.box(58,64)))
+      .with(physics)
+      .with(hpComponent)
+      .with((EnemyComponent)new HealerBotComponent())
+      .with(new CollidableComponent(true))
+      .build();
+  }
+  
   @Spawns("bullet")
   public Entity newBullet(SpawnData data) {
     Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
@@ -174,7 +193,7 @@ public class GameEntityFactory implements EntityFactory {
   @Spawns("background")
   public Entity newBackground(SpawnData data) {
     return entityBuilder().from(data)
-                          .view("background/Background5760.png")
+                          .view("background/background.png")
                           //.view(new Rectangle(5744 + FXGL.getAppWidth(),5744 + FXGL.getAppHeight(), Color.BLACK))
                           .zIndex(-1)
                           .with(new IrremovableComponent())
@@ -184,7 +203,7 @@ public class GameEntityFactory implements EntityFactory {
   @Spawns("upperBackground")
   public Entity newUpperBackground(SpawnData data) {
     return entityBuilder().from(data)
-            .view("background/UpperBackground5760.png")
+            .view("background/upperground.png")
             //.view(new Rectangle(5744 + FXGL.getAppWidth(),5744 + FXGL.getAppHeight(), Color.BLACK))
             .zIndex(3)
             .with(new IrremovableComponent())

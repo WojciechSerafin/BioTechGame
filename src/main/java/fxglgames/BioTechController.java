@@ -95,7 +95,7 @@ public class BioTechController implements UIController {
     health.setHeight(40);
     
     health.setLabelVisible(false);
-    
+    health.setMaxValue(hpComponent.getMaxHealth());
     health.currentValueProperty().bind(hpComponent.curHealthProperty());
     
     mana.setScaleX(1);

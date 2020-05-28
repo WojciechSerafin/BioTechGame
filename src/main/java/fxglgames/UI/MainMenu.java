@@ -5,8 +5,11 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.dsl.FXGL;
 import fxglgames.UI.buttons.GameButton;
 import javafx.beans.binding.StringBinding;
+import javafx.geometry.Point2D;
+import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -15,6 +18,9 @@ public class MainMenu extends FXGLMenu {
   
   public MainMenu() {
     super(MenuType.MAIN_MENU);
+  
+    Image image = new Image("assets/textures/cursor.png");
+    FXGL.getGameScene().setCursor(image, new Point2D(0.0, 0.0));
     
     var newGameButton = new GameButton("New Game", this::fireNewGame);
     newGameButton.setTranslateX(FXGL.getAppWidth() / 2 - newGameButton.getWidth() / 2);

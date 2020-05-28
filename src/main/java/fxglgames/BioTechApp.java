@@ -15,6 +15,9 @@ import fxglgames.UI.MainMenu;
 import fxglgames.components.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.geometry.Point2D;
+import javafx.scene.ImageCursor;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Circle;
@@ -60,6 +63,8 @@ public class BioTechApp extends GameApplication {
 
   @Override
   protected void initGame() {
+    Image image = new Image("assets/textures/cursor.png");  //pass in the image path
+    getGameScene().setCursor(image,new Point2D(0.0,0.0));
     getGameWorld().addEntityFactory(new GameEntityFactory());
     setLevelFromMap("tmx/test.tmx");
     spawn("background", 0, 0);

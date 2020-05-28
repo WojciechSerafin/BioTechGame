@@ -21,14 +21,14 @@
   <object id="515" name="wall" type="wall" x="800" y="864" width="32" height="448"/>
   <object id="516" name="wall" type="wall" x="800" y="832" width="448" height="32"/>
   <object id="517" name="wall" type="wall" x="288" y="608" width="128" height="32"/>
-  <object id="520" name="BoxerBot" type="BoxerBot" x="480" y="448">
+  <object id="520" name="HealerBot" type="HealerBot" x="480" y="448">
    <point/>
   </object>
   <object id="521" name="wall" type="wall" x="288" y="320" width="32" height="288"/>
   <object id="522" name="wall" type="wall" x="544" y="320" width="32" height="320"/>
   <object id="523" name="wall" type="wall" x="288" y="288" width="288" height="32"/>
   <object id="525" name="wall" type="wall" x="1760" y="640" width="128" height="32" rotation="180"/>
-  <object id="526" name="BoxerBot" type="BoxerBot" x="1664" y="416" rotation="180">
+  <object id="526" name="HealerBot" type="HealerBot" x="1664" y="416">
    <point/>
   </object>
   <object id="528" name="wall" type="wall" x="1504" y="640" width="32" height="320" rotation="180"/>
@@ -38,23 +38,23 @@
   <object id="532" name="wall" type="wall" x="1760" y="1824" width="128" height="32" rotation="180"/>
   <object id="533" name="wall" type="wall" x="1760" y="1792" width="32" height="288" rotation="180"/>
   <object id="534" name="wall" type="wall" x="288" y="1792" width="128" height="32"/>
-  <object id="535" name="BoxerBot" type="BoxerBot" x="480" y="1632">
+  <object id="535" name="AlertBot" type="AlertBot" x="480" y="1632">
    <point/>
   </object>
-  <object id="536" name="BoxerBot" type="BoxerBot" x="1664" y="1600" rotation="180">
+  <object id="536" name="AlertBot" type="AlertBot" x="1664" y="1600" rotation="180">
    <point/>
   </object>
   <object id="537" name="wall" type="wall" x="1760" y="1504" width="288" height="32" rotation="180"/>
   <object id="538" name="wall" type="wall" x="544" y="1504" width="32" height="320"/>
   <object id="539" name="wall" type="wall" x="288" y="1504" width="32" height="288"/>
   <object id="540" name="wall" type="wall" x="288" y="1472" width="288" height="32"/>
-  <object id="567" name="BoxerBot" type="BoxerBot" x="1024" y="544">
+  <object id="567" name="AlertBot" type="AlertBot" x="1024" y="544">
    <point/>
   </object>
-  <object id="568" name="BoxerBot" type="BoxerBot" x="608" y="1056">
+  <object id="568" name="AlertBot" type="AlertBot" x="608" y="1056">
    <point/>
   </object>
-  <object id="569" name="BoxerBot" type="BoxerBot" x="864" y="1696">
+  <object id="569" name="AlertBot" type="AlertBot" x="864" y="1696">
    <point/>
   </object>
   <object id="570" name="BoxerBot" type="BoxerBot" x="1856" y="1920">
