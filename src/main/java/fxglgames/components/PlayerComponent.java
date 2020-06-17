@@ -1,5 +1,6 @@
 package fxglgames.components;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.component.Required;
 import com.almasb.fxgl.texture.AnimatedTexture;
@@ -15,10 +16,12 @@ import javafx.util.Duration;
 import java.util.HashMap;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.image;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.runOnce;
 
 @Required(MoveComponent.class)
 public class PlayerComponent extends Component {
   private Boolean alive = true;
+  private Boolean isAttacking = false;
   private MoveComponent moveComponent;
   private AnimatedTexture texture;
   private HashMap<String, AnimationChannel> animations = new HashMap<String, AnimationChannel>();
@@ -26,15 +29,17 @@ public class PlayerComponent extends Component {
 
   
   public PlayerComponent() {
-    Image imageIdle = image("robot/boxer_bot_idle_sekwencja.png");
-    Image imageWalkDown = image("robot/boxer_bot_run_sekwencja.png");
-    Image imageWalkUp = image("robot/boxer_bot_run_tyl_sekwencja.png");
-    Image imageDeath = image("robot/boxer_bot_death_sekwencja.png");
+    Image imageIdle = image("robot/hero_idle_sekwencja.png");
+    Image imageWalkDown = image("robot/hero_run_sekwencja.png");
+    Image imageWalkUp = image("robot/hero_run_tyl_sekwencja.png");
+    Image imageDeath = image("robot/hero_death_sekwencja.png");
+    Image imageAttack = image("robot/hero_attack_sekwencja.png");
 
-    animations.put("animIdle", new AnimationChannel(imageIdle, Duration.seconds(0.66), 5));
-    animations.put("animWalkDown", new AnimationChannel(imageWalkDown, Duration.seconds(0.66), 16));
-    animations.put("animWalkUp", new AnimationChannel(imageWalkUp, Duration.seconds(0.66), 16));
-    animations.put("animDeath", new AnimationChannel(imageDeath, Duration.seconds(1), 8));
+    animations.put("animIdle", new AnimationChannel(imageIdle, Duration.seconds(0.66), 10));
+    animations.put("animWalkDown", new AnimationChannel(imageWalkDown, Duration.seconds(0.66), 10));
+    animations.put("animWalkUp", new AnimationChannel(imageWalkUp, Duration.seconds(0.66), 10));
+    animations.put("animDeath", new AnimationChannel(imageDeath, Duration.seconds(1), 7));
+    animations.put("animAttack", new AnimationChannel(imageAttack, Duration.seconds(0.5), 12));
 
     texture = new AnimatedTexture(animations.get("animIdle"));
     texture.loop();
@@ -62,7 +67,14 @@ public class PlayerComponent extends Component {
     if (!alive) {
       return;
     }
-    if (moveComponent.isMoving()) {
+    if (isAttacking) {
+      if (texture.getAnimationChannel() != animations.get("animAttack")) {
+        texture.loopAnimationChannel(animations.get("animAttack"));
+      }
+      FXGL.runOnce(() -> {
+        isAttacking = false;
+      }, Duration.seconds(0.5));
+    } else if (moveComponent.isMoving()) {
       int facing = moveComponent.getFacing();
       if (facing == -1) {
         if (texture.getAnimationChannel() != animations.get("animWalkUp")) {
@@ -96,5 +108,9 @@ public class PlayerComponent extends Component {
   public void playDeathAnimation() {
     this.alive = false;
     texture.playAnimationChannel(animations.get("animDeath"));
+  }
+  
+  public void setIsAttacking(Boolean isAttacking) {
+    this.isAttacking = isAttacking;
   }
 }

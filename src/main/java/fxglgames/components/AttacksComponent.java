@@ -15,8 +15,11 @@ import java.util.Date;
 import static com.almasb.fxgl.dsl.FXGL.getInput;
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
-public class AttacksComponent extends GenericBarViewComponent {
 
+public class AttacksComponent extends GenericBarViewComponent {
+    
+    protected PlayerComponent playerComponent;
+    
     private DoubleProperty mana = new SimpleDoubleProperty();
     private DoubleProperty maximumMana = new SimpleDoubleProperty();
     private int initMaxMana = 100;
@@ -26,7 +29,7 @@ public class AttacksComponent extends GenericBarViewComponent {
     private int manaRestorationDelay = 2000;
     
     private float attackSpeed = 2.5f;
-    private double bulletSpeed = 500;
+    private double bulletSpeed = 300;
     private Date nextAttack;
     private Date nextReset;
     private float resetDelay = 1f;
@@ -69,7 +72,7 @@ public class AttacksComponent extends GenericBarViewComponent {
             nextAttack = Date.from(Instant.now().plusMillis(Math.round(attackSpeed * 1000)));
             Point2D dir = new Point2D(getInput().getMouseXWorld() - entity.getX() - entity.getWidth() / 2,
                                       getInput().getMouseYWorld() - entity.getY() - entity.getHeight() / 2);
-
+            playerComponent.setIsAttacking(true);
             spawn("bullet", new SpawnData(entity.getCenter()).put("dir", dir)
                                                                         .put("bulletSpeed", bulletSpeed));
 

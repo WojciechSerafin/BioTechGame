@@ -138,6 +138,21 @@ public class GameEntityFactory implements EntityFactory {
                           .with(new CollidableComponent(true))
                           .build();
   }
+  @Spawns("DefenderBot")
+  public Entity newDefenderBot(SpawnData data) {
+    PhysicsComponent physics = new PhysicsComponent();
+    physics.setBodyType(BodyType.DYNAMIC);
+  
+    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,200.0,200.0);
+    return entityBuilder().from(data)
+                          .type(EntityType.ENEMY)
+                          .bbox(new HitBox(BoundingShape.box(58,64)))
+                          .with(physics)
+                          .with(hpComponent)
+                          .with((EnemyComponent)new DefenderBotComponent())
+                          .with(new CollidableComponent(true))
+                          .build();
+  }
 
   @Spawns("AlertBot")
   public Entity newAlertBot(SpawnData data) {
@@ -177,6 +192,37 @@ public class GameEntityFactory implements EntityFactory {
       .build();
   }
   
+  @Spawns("GuardianBot")
+  public Entity newGuardianBot(SpawnData data) {
+    PhysicsComponent physics = new PhysicsComponent();
+    physics.setBodyType(BodyType.DYNAMIC);
+    
+    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,500.0,500.0);
+    return entityBuilder().from(data)
+      .type(EntityType.ENEMY)
+      .bbox(new HitBox(BoundingShape.box(58,64)))
+      .with(physics)
+      .with(hpComponent)
+      .with((EnemyComponent)new GuardianBotComponent())
+      .with(new CollidableComponent(true))
+      .build();
+  }
+  @Spawns("ShooterBot")
+  public Entity newShooterBot(SpawnData data) {
+    PhysicsComponent physics = new PhysicsComponent();
+    physics.setBodyType(BodyType.DYNAMIC);
+    
+    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,50.0,50.0);
+    return entityBuilder().from(data)
+      .type(EntityType.ENEMY)
+      .bbox(new HitBox(BoundingShape.box(58,64)))
+      .with(physics)
+      .with(hpComponent)
+      .with((EnemyComponent)new ShooterBotComponent())
+      .with(new CollidableComponent(true))
+      .build();
+  }
+  
   @Spawns("bullet")
   public Entity newBullet(SpawnData data) {
     Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
@@ -190,6 +236,21 @@ public class GameEntityFactory implements EntityFactory {
                           .with(new CollidableComponent(true))
                           .build();
   }
+  
+  @Spawns("enemyBullet")
+  public Entity newEnemyBullet(SpawnData data) {
+    Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
+                             getInput().getMouseYWorld() - data.getY());
+    return entityBuilder().from(data)
+                          .type(EntityType.ENEMY_BULLET)
+                          .viewWithBBox("bullet/bullet.png")
+                          .with(new ProjectileComponent(data.get("dir"), data.get("bulletSpeed")))
+                          .with(new OffscreenCleanComponent())
+                          .with(new BulletComponent(30))
+                          .with(new CollidableComponent(true))
+                          .build();
+  }
+  
   @Spawns("background")
   public Entity newBackground(SpawnData data) {
     return entityBuilder().from(data)

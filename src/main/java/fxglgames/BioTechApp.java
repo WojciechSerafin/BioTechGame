@@ -102,6 +102,12 @@ public class BioTechApp extends GameApplication {
         a.removeFromWorld();
       }
     });
+    physics.addCollisionHandler(new CollisionHandler(EntityType.ENEMY_BULLET, EntityType.WALL) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        a.removeFromWorld();
+      }
+    });
     physics.addCollisionHandler(new CollisionHandler(EntityType.BULLET, EntityType.FAKE_WALL) {
       @Override
       protected void onCollisionBegin(Entity a, Entity b) {
@@ -109,7 +115,21 @@ public class BioTechApp extends GameApplication {
         b.getComponent(FakeWallComponent.class).setToDelete(Boolean.TRUE);
       }
     });
+    physics.addCollisionHandler(new CollisionHandler(EntityType.ENEMY_BULLET, EntityType.FAKE_WALL) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        a.removeFromWorld();
+      }
+    });
     physics.addCollisionHandler(new CollisionHandler(EntityType.BULLET, EntityType.ENEMY) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        Integer damage = a.getComponent(BulletComponent.class).getDamage();
+        b.getComponent(HPComponent.class).hit(damage);
+        a.removeFromWorld();
+      }
+    });
+    physics.addCollisionHandler(new CollisionHandler(EntityType.ENEMY_BULLET, EntityType.PLAYER) {
       @Override
       protected void onCollisionBegin(Entity a, Entity b) {
         Integer damage = a.getComponent(BulletComponent.class).getDamage();

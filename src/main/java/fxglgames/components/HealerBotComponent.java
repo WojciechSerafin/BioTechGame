@@ -29,14 +29,16 @@ public class HealerBotComponent extends EnemyComponent {
     animations.put("animWalkDown", new AnimationChannel(imageWalkDown, Duration.seconds(0.66), 12));
     animations.put("animWalkUp", new AnimationChannel(imageWalkUp, Duration.seconds(0.66), 12));
     animations.put("animDeath", new AnimationChannel(imageDeath, Duration.seconds(1), 6));
-    animations.put("animAttack", new AnimationChannel(imageAttack, Duration.seconds(1), 20));
-    animations.put("animAttack2", new AnimationChannel(imageAttack2, Duration.seconds(1), 20));
+  
+    int r = FXGL.random(0,1);
+    animations.put("animAttack", new AnimationChannel(r == 0 ? imageAttack : imageAttack2, Duration.seconds(1), 20));
+    //animations.put("animAttack2", new AnimationChannel(imageAttack2, Duration.seconds(1), 20));
   }
   
   @Override
   protected void initializeEnemy() throws Exception {
-    this.playerFollowingSpeed = 200;
-    this.checkForPlayerRadius = 300;
+    this.playerFollowingSpeed = 100;
+    this.checkForPlayerRadius = 270;
     this.attackRange = 300D;
     this.isAttacking = false;
   }
@@ -61,7 +63,7 @@ public class HealerBotComponent extends EnemyComponent {
     }, Duration.millis(660));
   }
   
-  @Override
+  /*@Override
   protected void updateAnimation() {
     if (!alive) {
       return;
@@ -104,6 +106,6 @@ public class HealerBotComponent extends EnemyComponent {
   private boolean isNotAttackingAnimation() {
     return (texture.getAnimationChannel() != animations.get("animAttack")) &&
            (texture.getAnimationChannel() != animations.get("animAttack2"));
-  }
+  }*/
 }
 

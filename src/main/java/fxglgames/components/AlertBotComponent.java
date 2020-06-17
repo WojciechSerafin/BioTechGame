@@ -32,9 +32,9 @@ public class AlertBotComponent extends EnemyComponent {
   
   @Override
   protected void initializeEnemy() throws Exception {
-    this.playerFollowingSpeed = 200;
-    this.checkForPlayerRadius = 300;
-    this.attackRange = 300D;
+    this.playerFollowingSpeed = 120;
+    this.checkForPlayerRadius = 270;
+    this.attackRange = 250D;
     this.isAttacking = false;
   }
   
@@ -70,7 +70,7 @@ public class AlertBotComponent extends EnemyComponent {
     double x = entity.getX();
     double y = entity.getY();
     for (int i = 0; i < numberOfFriendsToSpawn; i++) {
-      switch(FXGL.random(1,3)) {
+      switch(FXGL.random(1,5)) {
         case 1:
           spawn("BoxerBot", x+random(-100, 100), y+random(-100, 100));
           break;
@@ -79,6 +79,9 @@ public class AlertBotComponent extends EnemyComponent {
           break;
         case 3:
           spawn("HealerBot", x+random(-100, 100), y+random(-100, 100));
+          break;
+        case 4:
+          spawn("ShooterBot", x+random(-100, 100), y+random(-100, 100));
           break;
         default:
           break;
