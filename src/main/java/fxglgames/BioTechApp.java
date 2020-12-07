@@ -5,6 +5,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
@@ -106,6 +107,47 @@ public class BioTechApp extends GameApplication {
       @Override
       protected void onCollisionBegin(Entity a, Entity b) {
         a.removeFromWorld();
+      }
+    });
+    physics.addCollisionHandler(new CollisionHandler(EntityType.BOUNCING_BULLET, EntityType.WALL) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        ProjectileComponent component = a.getComponent(ProjectileComponent.class);
+        Point2D dir = new Point2D(player.getCenter().getX() - a.getX() - a.getWidth() / 2,
+          player.getCenter().getY() - a.getY() - a.getHeight() / 2);
+        component.setDirection(dir);
+      }
+    });
+    physics.addCollisionHandler(new CollisionHandler(EntityType.BOUNCING_BULLET, EntityType.FAKE_WALL) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        ProjectileComponent component = a.getComponent(ProjectileComponent.class);
+        Point2D dir = new Point2D(player.getCenter().getX() - a.getX() - a.getWidth() / 2,
+          player.getCenter().getY() - a.getY() - a.getHeight() / 2);
+        component.setDirection(dir);
+      }
+    });
+    physics.addCollisionHandler(new CollisionHandler(EntityType.OIL_POOL, EntityType.PLAYER) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        System.out.println("Player is coliding with oil pool");
+        a.getComponent(OilPoolComponent.class).dealDamage(b);
+      }
+    });
+    physics.addCollisionHandler(new CollisionHandler(EntityType.BOUNCING_BULLET, EntityType.PLAYER) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        Integer damage = a.getComponent(BulletComponent.class).getDamage();
+        b.getComponent(HPComponent.class).hit(damage);
+        a.removeFromWorld();
+        spawn("OilPool", player.getCenter());
+      }
+    });
+    physics.addCollisionHandler(new CollisionHandler(EntityType.BULLET, EntityType.BOUNCING_BULLET) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        a.removeFromWorld();
+        b.removeFromWorld();
       }
     });
     physics.addCollisionHandler(new CollisionHandler(EntityType.BULLET, EntityType.FAKE_WALL) {

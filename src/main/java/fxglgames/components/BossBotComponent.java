@@ -10,16 +10,16 @@ import javafx.util.Duration;
 
 import java.time.Instant;
 import java.util.Date;
-import java.util.stream.Collectors;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-import static com.almasb.fxgl.dsl.FXGL.getInput;
+import static com.almasb.fxgl.dsl.FXGL.spawn;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.image;
 
-public class ShooterBotComponent extends EnemyComponent {
+public class BossBotComponent extends EnemyComponent {
+  private int alertRange = 1200;
+  private Boolean isSpawning = false;
   private Date nextAttack;
   private float attackSpeed = 2.5f;
-  private double bulletSpeed = 300;
+  private double bulletSpeed = 200;
   
   @Override
   protected void loadAnimations() throws Exception {
@@ -46,7 +46,7 @@ public class ShooterBotComponent extends EnemyComponent {
   
   @Override
   public void onAdded() {
-    entity.getComponent(HPComponent.class).setEnemyType(EnemyType.SHOOTER_BOT);
+    entity.getComponent(HPComponent.class).setEnemyType(EnemyType.BOSS_BOT);
     super.onAdded();
   }
   
@@ -67,7 +67,7 @@ public class ShooterBotComponent extends EnemyComponent {
       Point2D dir = new Point2D(getPlayer().getCenter().getX() - entity.getX() - entity.getWidth() / 2,
         getPlayer().getCenter().getY() - entity.getY() - entity.getHeight() / 2);
       
-      spawn("enemyBullet",
+      spawn("BouncingBullet",
         new SpawnData(entity.getCenter().add(- entity.getWidth() / 4, - entity.getHeight() / 4)).put("dir", dir)
         .put("bulletSpeed", bulletSpeed));
      
@@ -76,7 +76,7 @@ public class ShooterBotComponent extends EnemyComponent {
       Point2D dir = new Point2D(getPlayer().getCenter().getX() - entity.getX() - entity.getWidth() / 2,
         getPlayer().getCenter().getY() - entity.getY() - entity.getHeight() / 2);
       
-      spawn("enemyBullet",
+      spawn("BouncingBullet",
         new SpawnData(entity.getCenter().add( entity.getWidth() / 4, - entity.getHeight() / 4)).put("dir", dir)
         .put("bulletSpeed", bulletSpeed));
   }

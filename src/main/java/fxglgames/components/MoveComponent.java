@@ -7,6 +7,8 @@ import com.almasb.fxgl.physics.box2d.dynamics.BodyDef;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
 
+import java.time.Duration;
+
 @Required(PhysicsComponent.class)
 public class MoveComponent extends Component {
   private PhysicsComponent physics;
@@ -54,4 +56,5 @@ public class MoveComponent extends Component {
     else
       return 0;
   }
+  
 }

@@ -2,6 +2,7 @@ package fxglgames;
 
 import com.almasb.fxgl.dsl.EntityBuilder;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.ExpireCleanComponent;
 import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
 import com.almasb.fxgl.dsl.components.OffscreenPauseComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
@@ -223,6 +224,22 @@ public class GameEntityFactory implements EntityFactory {
       .build();
   }
   
+  @Spawns("BossBot")
+  public Entity newBossBot(SpawnData data) {
+    PhysicsComponent physics = new PhysicsComponent();
+    physics.setBodyType(BodyType.DYNAMIC);
+    
+    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,30.0,30.0);
+    return entityBuilder().from(data)
+      .type(EntityType.ENEMY)
+      .bbox(new HitBox(BoundingShape.box(58,64)))
+      .with(physics)
+      .with(hpComponent)
+      .with((EnemyComponent)new BossBotComponent())
+      .with(new CollidableComponent(true))
+      .build();
+  }
+  
   @Spawns("bullet")
   public Entity newBullet(SpawnData data) {
     Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
@@ -233,6 +250,34 @@ public class GameEntityFactory implements EntityFactory {
                           .with(new ProjectileComponent(data.get("dir"), data.get("bulletSpeed")))
                           .with(new OffscreenCleanComponent())
                           .with(new BulletComponent(30))
+                          .with(new CollidableComponent(true))
+                          .build();
+  }
+  
+  @Spawns("BouncingBullet")
+  public Entity newBouncingBullet(SpawnData data) {
+    Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
+                             getInput().getMouseYWorld() - data.getY());
+    return entityBuilder().from(data)
+                          .type(EntityType.BOUNCING_BULLET)
+                          .viewWithBBox("bullet/BouncingBullet.png")
+                          .with(new ProjectileComponent(data.get("dir"), data.get("bulletSpeed")))
+                          .with(new BulletComponent(15))
+                          .with(new CollidableComponent(true))
+                          .with(new ExpireCleanComponent(Duration.seconds(30)))
+                          .build();
+  }
+  
+  @Spawns("OilPool")
+  public Entity newOilPool(SpawnData data) {
+    Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
+                             getInput().getMouseYWorld() - data.getY());
+    return entityBuilder().from(data)
+                          .type(EntityType.OIL_POOL)
+                          .viewWithBBox("bullet/OilPool.png")
+                          .zIndex(-1)
+                          .with(new OilPoolComponent(15, Duration.seconds(1)))
+                          .with(new ExpireCleanComponent(Duration.seconds(30)))
                           .with(new CollidableComponent(true))
                           .build();
   }
