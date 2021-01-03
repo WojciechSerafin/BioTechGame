@@ -25,13 +25,13 @@
          </padding>
          <children>-->
             <ImageView fx:id="skill1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true"
-                       layoutY="497.0" translateX="350.0">
+                       layoutY="497.0" translateX="350.0" scaleX="0.8" scaleY="0.8">
                <image>
                   <Image url="file:/@icons/1.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="skill2" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true"
-                       layoutY="497.0" translateX="390.0">
+                       layoutY="497.0" translateX="390.0" scaleX="0.8" scaleY="0.8">
                <image>
                   <Image url="file:/@icons/2.jpg" />
                </image>
@@ -47,13 +47,13 @@
                </VBox.margin>
             </ProgressBar>
             <ImageView fx:id="skill3" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true"
-                       layoutY="497.0" translateX="540.0">
+                       layoutY="497.0" translateX="540.0" scaleX="0.8" scaleY="0.8">
                <image>
                   <Image url="file:/@icons/3.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="skill4" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true"
-                       layoutY="497.0" translateX="580.0">
+                       layoutY="497.0" translateX="580.0" scaleX="0.8" scaleY="0.8">
                <image>
                   <Image url="file:/@icons/4.jpg" />
                </image>

@@ -90,9 +90,9 @@ public class BioTechController implements UIController {
     health.getInnerBar().arcHeightProperty().unbind();
     health.getInnerBar().setArcWidth(0);
     health.getInnerBar().setArcHeight(0);
-    health.setFill(Color.RED);
-    health.setWidth(40);
-    health.setHeight(40);
+    health.setFill(Color.RED.darker().darker());
+    health.setWidth(35);
+    health.setHeight(35);
     
     health.setLabelVisible(false);
     health.setMaxValue(hpComponent.getMaxHealth());
@@ -112,9 +112,9 @@ public class BioTechController implements UIController {
     mana.getInnerBar().arcHeightProperty().unbind();
     mana.getInnerBar().setArcWidth(0);
     mana.getInnerBar().setArcHeight(0);
-    mana.setFill(Color.BLUE.brighter());
-    mana.setWidth(40);
-    mana.setHeight(40);
+    mana.setFill(Color.BLUE.darker().darker());
+    mana.setWidth(35);
+    mana.setHeight(35);
     mana.maxValueProperty().bind(attacksComponent.maximumManaProperty());
     mana.currentValueProperty().bind(attacksComponent.manaProperty());
     
