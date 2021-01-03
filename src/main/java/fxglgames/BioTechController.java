@@ -64,15 +64,15 @@ public class BioTechController implements UIController {
     nazwaLokacji.setVisible(true);
     
     
-    Image image = new Image("assets/ui/icons/1.jpg");
+    Image image = new Image("assets/ui/icons/1.png");
     skill1.setImage(image);
-    image = new Image("assets/ui/icons/2.jpg");
+    image = new Image("assets/ui/icons/2.png");
     skill2.setImage(image);
-    image = new Image("assets/ui/icons/3.jpg");
+    image = new Image("assets/ui/icons/3.png");
     skill3.setImage(image);
-    image = new Image("assets/ui/icons/4.jpg");
+    image = new Image("assets/ui/icons/4.png");
     skill4.setImage(image);
-    image = new Image("assets/ui/icons/5.jpg");
+    image = new Image("assets/ui/icons/5.png");
     playerInfo.setImage(image);
     
     health.setScaleX(1);
