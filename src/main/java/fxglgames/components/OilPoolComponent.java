@@ -22,7 +22,6 @@ public class OilPoolComponent extends Component {
     
     public void dealDamage(Entity e) {
         FXGL.runOnce(() -> {
-            System.out.printf("deal damage run");
             if (entity.isColliding(e)) {
                 System.out.printf("dealing damage");
                 HPComponent component = e.getComponent(HPComponent.class);

@@ -22,14 +22,14 @@ public class MainMenu extends FXGLMenu {
     Image image = new Image("assets/textures/cursor.png");
     FXGL.getGameScene().setCursor(image, new Point2D(0.0, 0.0));
     
-    var newGameButton = new GameButton("New Game", this::fireNewGame);
-    newGameButton.setTranslateX(FXGL.getAppWidth() / 2 - newGameButton.getWidth() / 2);
-    newGameButton.setTranslateY(FXGL.getAppHeight() / 2 - newGameButton.getHeight() / 2);
+    var newGameButton = new GameButton(this::fireNewGame);
+    newGameButton.setTranslateX(FXGL.getAppWidth() / 3.32 - newGameButton.getWidth() / 2);
+    newGameButton.setTranslateY(FXGL.getAppHeight() / 1.36 - newGameButton.getHeight() / 2);
     getMenuContentRoot().getChildren().add(newGameButton);
     
-    var exitGameButton = new GameButton("Exit", this::fireExit);
-    exitGameButton.setTranslateX(FXGL.getAppWidth() / 2 - exitGameButton.getWidth() / 2);
-    exitGameButton.setTranslateY(FXGL.getAppHeight() / 2 - exitGameButton.getHeight() / 2 + exitGameButton.getHeight() * 1.5);
+    var exitGameButton = new GameButton( this::fireExit);
+    exitGameButton.setTranslateX(FXGL.getAppWidth() / 8.5 - exitGameButton.getWidth() / 2);
+    exitGameButton.setTranslateY(FXGL.getAppHeight() / 1.1 - exitGameButton.getHeight() / 2);
     getMenuContentRoot().getChildren().add(exitGameButton);
     
   }
@@ -46,7 +46,7 @@ public class MainMenu extends FXGLMenu {
   
   @Override
   protected Node createBackground(double v, double v1) {
-    return new Rectangle(v, v1, Color.GRAY);
+    return FXGL.texture("menus/MainMenu.png");
   }
   
   @Override

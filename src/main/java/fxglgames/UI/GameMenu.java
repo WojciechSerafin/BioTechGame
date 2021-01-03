@@ -16,30 +16,20 @@ import javafx.scene.text.Text;
 public class GameMenu extends FXGLMenu {
   public GameMenu() {
     super(MenuType.GAME_MENU);
-    var text = new GameText("PAUSE");
-    text.setTranslateX(FXGL.getAppWidth() / 2 - text.getWidth() / 2);
-    text.setTranslateY(FXGL.getAppHeight() / 4 - text.getHeight() / 2);
-    getMenuContentRoot().getChildren().add(text);
   
-  
-    var resumeGameButton = new GameButton("Resume", this::fireResume);
-    resumeGameButton.setTranslateX(FXGL.getAppWidth() / 2 - resumeGameButton.getWidth() / 2);
-    resumeGameButton.setTranslateY(FXGL.getAppHeight() / 2 - resumeGameButton.getHeight() / 2 - resumeGameButton.getHeight() * 1);
+    var resumeGameButton = new GameButton( this::fireResume);
+    resumeGameButton.setTranslateX(FXGL.getAppWidth() / 7.5 - resumeGameButton.getWidth() / 2);
+    resumeGameButton.setTranslateY(FXGL.getAppHeight() / 1.72 - resumeGameButton.getHeight() / 2);
     getMenuContentRoot().getChildren().add(resumeGameButton);
   
-    var bachToMainMenuButton = new GameButton("Main Menu", this::fireExitToMainMenu);
-    bachToMainMenuButton.setTranslateX(FXGL.getAppWidth() / 2 - bachToMainMenuButton.getWidth() / 2);
-    bachToMainMenuButton.setTranslateY(FXGL.getAppHeight() / 2 - bachToMainMenuButton.getHeight() / 2 + resumeGameButton.getHeight() * 0.5);
-    getMenuContentRoot().getChildren().add(bachToMainMenuButton);
-    
-    var newGameButton = new GameButton("New Game", this::fireNewGame);
-    newGameButton.setTranslateX(FXGL.getAppWidth() / 2 - newGameButton.getWidth() / 2);
-    newGameButton.setTranslateY(FXGL.getAppHeight() / 2 - newGameButton.getHeight() / 2 + resumeGameButton.getHeight() * 2);
+    var newGameButton = new GameButton(this::fireNewGame);
+    newGameButton.setTranslateX(FXGL.getAppWidth() / 3.32 - newGameButton.getWidth() / 2);
+    newGameButton.setTranslateY(FXGL.getAppHeight() / 1.36 - newGameButton.getHeight() / 2);
     getMenuContentRoot().getChildren().add(newGameButton);
   
-    var exitGameButton = new GameButton("Exit", this::fireExit);
-    exitGameButton.setTranslateX(FXGL.getAppWidth() / 2 - exitGameButton.getWidth() / 2);
-    exitGameButton.setTranslateY(FXGL.getAppHeight() / 2 - exitGameButton.getHeight() / 2 + exitGameButton.getHeight() * 3.5);
+    var exitGameButton = new GameButton( this::fireExit);
+    exitGameButton.setTranslateX(FXGL.getAppWidth() / 8.5 - exitGameButton.getWidth() / 2);
+    exitGameButton.setTranslateY(FXGL.getAppHeight() / 1.1 - exitGameButton.getHeight() / 2);
     getMenuContentRoot().getChildren().add(exitGameButton);
   }
   
@@ -55,7 +45,7 @@ public class GameMenu extends FXGLMenu {
   
   @Override
   protected Node createBackground(double v, double v1) {
-    return new Rectangle(v, v1, Color.GRAY);
+    return FXGL.texture("menus/GameMenu.png");
   }
   
   @Override

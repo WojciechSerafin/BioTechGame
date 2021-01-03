@@ -3,6 +3,7 @@ package fxglgames;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.scene.LoadingScene;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
@@ -22,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Circle;
+import org.jetbrains.annotations.NotNull;
 
 
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -130,7 +132,6 @@ public class BioTechApp extends GameApplication {
     physics.addCollisionHandler(new CollisionHandler(EntityType.OIL_POOL, EntityType.PLAYER) {
       @Override
       protected void onCollisionBegin(Entity a, Entity b) {
-        System.out.println("Player is coliding with oil pool");
         a.getComponent(OilPoolComponent.class).dealDamage(b);
       }
     });

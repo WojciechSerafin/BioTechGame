@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="imagePane" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../../komiks/styles/styles.css"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="komiks.controllers.ImageController">
+   <children>
+      <Button fx:id="next" layoutX="175.0" layoutY="150.0" mnemonicParsing="false" onAction="#nextImage" text="next" />
+      <Button fx:id="prev" layoutX="175.0" layoutY="100.0" mnemonicParsing="false" onAction="#prevImage" text="prev" />
+      <Button fx:id="play" layoutX="176.0" layoutY="215.0" mnemonicParsing="false" onAction="#play" text="play" />
+   </children>
+</Pane>

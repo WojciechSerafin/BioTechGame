@@ -3,6 +3,7 @@ package fxglgames.components;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.view.GenericBarViewComponent;
 import com.almasb.fxgl.entity.component.Component;
+import fxglgames.BioTechApp;
 import fxglgames.EnemyType;
 import fxglgames.EntityType;
 import fxglgames.utils.Utils;
@@ -49,6 +50,8 @@ public class HPComponent extends GenericBarViewComponent {
         if (this.curHealth.get() <= 0) {
             if (entity.getType() == EntityType.PLAYER) {
                 entity.getComponent(PlayerComponent.class).playDeathAnimation();
+                FXGL.runOnce(() -> FXGL.showMessage("You died", () -> FXGL.getGameController().gotoMainMenu()),
+                  Duration.millis(1000));
             } else if (entity.getType() == EntityType.ENEMY) {
                 getEnemyComponent().playDeathAnimation();
                 FXGL.runOnce(() -> {entity.removeFromWorld();}, Duration.seconds(1));
