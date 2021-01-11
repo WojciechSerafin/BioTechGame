@@ -268,10 +268,30 @@ public class GameEntityFactory implements EntityFactory {
                           .build();
   }
   
+  @Spawns("Note")
+  public Entity newNote(SpawnData data) {
+    return entityBuilder().from(data)
+      .type(EntityType.NOTE)
+      .view("notes/notatka.png")
+      .bbox(new HitBox(BoundingShape.box(25,25)))
+      .with(new CollidableComponent(true))
+      .with(new NoteMessageComponent(EntityType.NOTE, "notes/Notatka" + data.get("numer") + ".png"))
+      .build();
+  }
+  
+  @Spawns("Message")
+  public Entity newMessage(SpawnData data) {
+    return entityBuilder().from(data)
+      .type(EntityType.MESSAGE)
+      .view("messages/list.png")
+      .bbox(new HitBox(BoundingShape.box(25,25)))
+      .with(new CollidableComponent(true))
+      .with(new NoteMessageComponent(EntityType.MESSAGE, "messages/List" + data.get("numer") + ".png"))
+      .build();
+  }
+  
   @Spawns("OilPool")
   public Entity newOilPool(SpawnData data) {
-    Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
-                             getInput().getMouseYWorld() - data.getY());
     return entityBuilder().from(data)
                           .type(EntityType.OIL_POOL)
                           .viewWithBBox("bullet/OilPool.png")
@@ -284,8 +304,6 @@ public class GameEntityFactory implements EntityFactory {
   
   @Spawns("enemyBullet")
   public Entity newEnemyBullet(SpawnData data) {
-    Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
-                             getInput().getMouseYWorld() - data.getY());
     return entityBuilder().from(data)
                           .type(EntityType.ENEMY_BULLET)
                           .viewWithBBox("bullet/bullet.png")
