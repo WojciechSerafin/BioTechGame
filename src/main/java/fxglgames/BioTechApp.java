@@ -15,6 +15,7 @@ import com.almasb.fxgl.ui.UI;
 import fxglgames.UI.GameMenu;
 import fxglgames.UI.MainMenu;
 import fxglgames.components.*;
+import fxglgames.subscenes.ListOrMessageSubScene;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Point2D;
@@ -36,6 +37,9 @@ public class BioTechApp extends GameApplication {
   private PlayerComponent playerComponent;
   private AttacksComponent attacksComponent;
   private BioTechController uiController;
+  
+  public static String readableFileName;
+  
   @Override
   protected void initSettings(GameSettings gameSettings) {
     gameSettings.setHeight(540);
@@ -66,8 +70,8 @@ public class BioTechApp extends GameApplication {
 
   @Override
   protected void initGame() {
-    Image image = new Image("assets/textures/cursor.png");  //pass in the image path
-    getGameScene().setCursor(image,new Point2D(0.0,0.0));
+    Image image = new Image("assets/textures/cursor.png");
+    getGameScene().setCursor(image,new Point2D(3D,3D));
     getGameWorld().addEntityFactory(new GameEntityFactory());
     setLevelFromMap("tmx/test.tmx");
     spawn("background", 0, 0);
@@ -180,6 +184,28 @@ public class BioTechApp extends GameApplication {
         a.removeFromWorld();
       }
     });
+    physics.addCollisionHandler(new CollisionHandler(EntityType.NOTE, EntityType.PLAYER) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        readableFileName = a.getComponent(NoteMessageComponent.class).getMessageFileName();
+      }
+  
+      @Override
+      protected void onCollisionEnd(Entity a, Entity b) {
+        readableFileName = null;
+      }
+    });
+    physics.addCollisionHandler(new CollisionHandler(EntityType.MESSAGE, EntityType.PLAYER) {
+      @Override
+      protected void onCollisionBegin(Entity a, Entity b) {
+        readableFileName = a.getComponent(NoteMessageComponent.class).getMessageFileName();
+      }
+    
+      @Override
+      protected void onCollisionEnd(Entity a, Entity b) {
+        readableFileName = null;
+      }
+    });
   }
   
   
@@ -276,6 +302,15 @@ public class BioTechApp extends GameApplication {
         super.onActionEnd();
       }
     }, MouseButton.SECONDARY);
+    
+    getInput().addAction(new UserAction("Read") {
+      @Override
+      protected void onActionBegin() {
+        if (readableFileName != null) {
+          getSceneService().pushSubScene(new ListOrMessageSubScene(readableFileName));
+        }
+      }
+    }, KeyCode.E);
   }
   
 }

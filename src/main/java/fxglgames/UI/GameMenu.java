@@ -6,17 +6,24 @@ import com.almasb.fxgl.dsl.FXGL;
 import fxglgames.UI.buttons.GameButton;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+import static com.almasb.fxgl.dsl.FXGL.getGameScene;
+
 public class GameMenu extends FXGLMenu {
   public GameMenu() {
     super(MenuType.GAME_MENU);
   
+    Image image = new Image("assets/textures/cursor.png");
+    getGameScene().setCursor(image,new Point2D(3D,3D));
+    
     var resumeGameButton = new GameButton( this::fireResume);
     resumeGameButton.setTranslateX(FXGL.getAppWidth() / 7.5 - resumeGameButton.getWidth() / 2);
     resumeGameButton.setTranslateY(FXGL.getAppHeight() / 1.72 - resumeGameButton.getHeight() / 2);

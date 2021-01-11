@@ -20,7 +20,7 @@ public class MainMenu extends FXGLMenu {
     super(MenuType.MAIN_MENU);
   
     Image image = new Image("assets/textures/cursor.png");
-    FXGL.getGameScene().setCursor(image, new Point2D(0.0, 0.0));
+    FXGL.getGameScene().setCursor(image, new Point2D(3D, 3D));
     
     var newGameButton = new GameButton(this::fireNewGame);
     newGameButton.setTranslateX(FXGL.getAppWidth() / 3.32 - newGameButton.getWidth() / 2);

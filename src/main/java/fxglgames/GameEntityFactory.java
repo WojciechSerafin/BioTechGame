@@ -242,8 +242,6 @@ public class GameEntityFactory implements EntityFactory {
   
   @Spawns("bullet")
   public Entity newBullet(SpawnData data) {
-    Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
-                             getInput().getMouseYWorld() - data.getY());
     return entityBuilder().from(data)
                           .type(EntityType.BULLET)
                           .viewWithBBox("bullet/bullet.png")
@@ -256,8 +254,6 @@ public class GameEntityFactory implements EntityFactory {
   
   @Spawns("BouncingBullet")
   public Entity newBouncingBullet(SpawnData data) {
-    Point2D dir = new Point2D(getInput().getMouseXWorld() - data.getX(),
-                             getInput().getMouseYWorld() - data.getY());
     return entityBuilder().from(data)
                           .type(EntityType.BOUNCING_BULLET)
                           .viewWithBBox("bullet/BouncingBullet.png")
@@ -270,23 +266,25 @@ public class GameEntityFactory implements EntityFactory {
   
   @Spawns("Note")
   public Entity newNote(SpawnData data) {
+    Point2D point2D = new Point2D(-15, -22);
     return entityBuilder().from(data)
       .type(EntityType.NOTE)
       .view("notes/notatka.png")
-      .bbox(new HitBox(BoundingShape.box(25,25)))
+      .bbox(new HitBox(point2D, BoundingShape.box(50,50)))
       .with(new CollidableComponent(true))
-      .with(new NoteMessageComponent(EntityType.NOTE, "notes/Notatka" + data.get("numer") + ".png"))
+      .with(new NoteMessageComponent("notes/Notatka" + data.get("numer") + ".png"))
       .build();
   }
   
   @Spawns("Message")
   public Entity newMessage(SpawnData data) {
+    Point2D point2D = new Point2D(-15, -22);
     return entityBuilder().from(data)
       .type(EntityType.MESSAGE)
       .view("messages/list.png")
-      .bbox(new HitBox(BoundingShape.box(25,25)))
+      .bbox(new HitBox(point2D, BoundingShape.box(50,50)))
       .with(new CollidableComponent(true))
-      .with(new NoteMessageComponent(EntityType.MESSAGE, "messages/List" + data.get("numer") + ".png"))
+      .with(new NoteMessageComponent("messages/List" + data.get("numer") + ".png"))
       .build();
   }
   

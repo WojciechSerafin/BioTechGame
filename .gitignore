@@ -2,3 +2,5 @@
 /logs/*
 /profiles/*
 /target/*
+/.idea/
+/logs/
