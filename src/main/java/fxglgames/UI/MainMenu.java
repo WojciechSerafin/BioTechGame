@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.dsl.FXGL;
 import fxglgames.UI.buttons.GameButton;
+import fxglgames.subscenes.YouSureSubScene;
 import javafx.beans.binding.StringBinding;
 import javafx.geometry.Point2D;
 import javafx.scene.ImageCursor;
@@ -13,6 +14,8 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+
+import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 
 public class MainMenu extends FXGLMenu {
   
@@ -27,7 +30,7 @@ public class MainMenu extends FXGLMenu {
     newGameButton.setTranslateY(FXGL.getAppHeight() / 1.36 - newGameButton.getHeight() / 2);
     getMenuContentRoot().getChildren().add(newGameButton);
     
-    var exitGameButton = new GameButton( this::fireExit);
+    var exitGameButton = new GameButton(  () -> getSceneService().pushSubScene(new YouSureSubScene()));
     exitGameButton.setTranslateX(FXGL.getAppWidth() / 8.5 - exitGameButton.getWidth() / 2);
     exitGameButton.setTranslateY(FXGL.getAppHeight() / 1.1 - exitGameButton.getHeight() / 2);
     getMenuContentRoot().getChildren().add(exitGameButton);

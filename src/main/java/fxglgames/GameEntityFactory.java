@@ -229,7 +229,7 @@ public class GameEntityFactory implements EntityFactory {
     PhysicsComponent physics = new PhysicsComponent();
     physics.setBodyType(BodyType.DYNAMIC);
     
-    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,30.0,30.0);
+    HPComponent hpComponent = new HPComponent(-18, -20,Color.RED,90.0,90.0);
     return entityBuilder().from(data)
       .type(EntityType.ENEMY)
       .bbox(new HitBox(BoundingShape.box(58,64)))

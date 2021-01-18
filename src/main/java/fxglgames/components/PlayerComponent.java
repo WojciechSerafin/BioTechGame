@@ -107,7 +107,9 @@ public class PlayerComponent extends Component {
   }
   public void playDeathAnimation() {
     this.alive = false;
-    texture.playAnimationChannel(animations.get("animDeath"));
+    if (texture.getAnimationChannel() != animations.get("animDeath")) {
+      texture.playAnimationChannel(animations.get("animDeath"));
+    }
   }
   
   public void setIsAttacking(Boolean isAttacking) {

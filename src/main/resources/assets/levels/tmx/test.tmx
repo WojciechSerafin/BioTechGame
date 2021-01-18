@@ -8,9 +8,9 @@
   <object id="101" name="player" type="player" x="992" y="224">
    <point/>
   </object>
-<!--  <object id="535" name="BossBot" type="BossBot" x="1002" y="224">-->
-<!--   <point/>-->
-<!--  </object>-->
+  <object id="535" name="BossBot" type="BossBot" x="1002" y="224">
+   <point/>
+  </object>
 
   <object id="535" name="Note" type="Note" x="902" y="224">
    <properites>

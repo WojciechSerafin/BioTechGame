@@ -6,6 +6,8 @@ import com.almasb.fxgl.entity.component.Component;
 import fxglgames.BioTechApp;
 import fxglgames.EnemyType;
 import fxglgames.EntityType;
+import fxglgames.subscenes.GameOverSubScene;
+import fxglgames.subscenes.ListOrMessageSubScene;
 import fxglgames.utils.Utils;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
@@ -13,6 +15,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import org.jetbrains.annotations.NotNull;
+
+import static com.almasb.fxgl.dsl.FXGL.getSceneService;
 
 
 public class HPComponent extends GenericBarViewComponent {
@@ -29,14 +33,15 @@ public class HPComponent extends GenericBarViewComponent {
         
         this.curHealth.setValue(maxValue);
         valueProperty().bind(curHealth);
-        getBar().setScaleX(0.75d);
-        getBar().setScaleY(0.75d);
+//        getBar().setScaleX(0.75d);
+//        getBar().setScaleY(0.75d);
         getBar().getBackgroundBar().arcWidthProperty().bind(dp);
         getBar().getBackgroundBar().arcHeightProperty().bind(dp);
         getBar().getInnerBar().arcHeightProperty().bind(dp);
         getBar().getInnerBar().arcWidthProperty().bind(dp);
         getBar().getBackgroundBar().setEffect(null);
         getBar().getInnerBar().setEffect(null);
+        getBar().setLabelVisible(BioTechApp.DEBUG);
     }
     
 
@@ -46,12 +51,14 @@ public class HPComponent extends GenericBarViewComponent {
      * @return if entity is alive
      */
     public Boolean hit(Integer damage) {
-        this.curHealth.set(curHealth.get() - damage);
+        if (this.curHealth.get() > 0) {
+            this.curHealth.set(Utils.clamp(curHealth.get() - damage, 0D, maxHealth));
+        }
         if (this.curHealth.get() <= 0) {
             if (entity.getType() == EntityType.PLAYER) {
                 entity.getComponent(PlayerComponent.class).playDeathAnimation();
-                FXGL.runOnce(() -> FXGL.showMessage("You died", () -> FXGL.getGameController().gotoMainMenu()),
-                  Duration.millis(1000));
+                FXGL.runOnce(() -> getSceneService().pushSubScene(new GameOverSubScene()),
+                  Duration.millis(2000));
             } else if (entity.getType() == EntityType.ENEMY) {
                 getEnemyComponent().playDeathAnimation();
                 FXGL.runOnce(() -> {entity.removeFromWorld();}, Duration.seconds(1));

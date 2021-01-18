@@ -10,26 +10,44 @@ import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
 import java.time.Duration;
 
 @Required(PhysicsComponent.class)
+@Required(HPComponent.class)
 public class MoveComponent extends Component {
   private PhysicsComponent physics;
+  private HPComponent hpComponent;
   
   
   private int speed = 300;
   
   public void moveLeft() {
-    physics.setVelocityX(-speed);
+    if (hpComponent.getCurHealth() > 0) {
+      physics.setVelocityX(-speed);
+    } else {
+      physics.setVelocityX(0);
+    }
   }
 
   public void moveRight() {
-    physics.setVelocityX(speed);
+    if (hpComponent.getCurHealth() > 0) {
+      physics.setVelocityX(speed);
+    } else {
+      physics.setVelocityX(0);
+    }
   }
 
   public void moveUp() {
-    physics.setVelocityY(-speed);
+    if (hpComponent.getCurHealth() > 0) {
+      physics.setVelocityY(-speed);
+    } else {
+      physics.setVelocityY(0);
+    }
   }
 
   public void moveDown() {
-    physics.setVelocityY(speed);
+    if (hpComponent.getCurHealth() > 0) {
+      physics.setVelocityY(speed);
+    } else {
+      physics.setVelocityY(0);
+    }
   }
   
   public void stopHorizontal() {
